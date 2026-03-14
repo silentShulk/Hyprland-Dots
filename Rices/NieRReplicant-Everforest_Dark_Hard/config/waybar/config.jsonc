@@ -1,0 +1,197 @@
+{
+  "margin-top": 5,
+  "margin-bottom": 5,
+  "margin-right": 5,
+  "margin-left": 5,
+
+  "position": "left",
+
+  "modules-left": [
+    "hyprland/window",
+    "custom/separator-blank",
+    "group/mediaplayer"
+  ],
+  "modules-center": [
+    "clock",
+    "custom/separator-blank",
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "group/hardware",
+    "custom/separator-blank",
+    "group/audio",
+    "custom/separator-blank",
+    "custom/power"
+  ],
+
+
+
+  /*----------------*/
+  /*   SEPARATORS   */
+  /*----------------*/
+
+  "custom/separator-blank": {
+    "format": " "
+  },
+  "custom/separator-dash": {
+    "format": " - "
+  },
+  "custom/separator-spaceless_dash": {
+    "format": "-"
+  },
+  "custom/separator-pipe": {
+    "format": " | "
+  }, 
+
+
+
+  /*------------------*/
+  /*   MODULES LEFT   */
+  /*------------------*/
+
+  "hyprland/window": {
+    "format": "",
+    "icon": true,
+
+    "tooltip": true,
+    "tooltip-format": "{title}"
+  },
+
+  "cava": {
+    "cava_config": "/home/cmarco/.config/cava/cava.conf",
+    "bars": 4,
+    "framerate": 40,
+
+    "autosens": 1,
+    "lower_cutoff_freq": 50,
+    "higher_cutoff_freq": 10000,
+
+    "method": "pulse",
+    "source": "auto",
+
+    "stereo": true,
+    "bar_delimiter": 0,
+
+    "noise_reduction": 0.77,
+    "input_delay": 2,
+
+    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+
+    "actions": {
+      "on-click-right": "mode"
+    }
+  },
+  "mpris": {
+	  "format": "{title}",
+	  "format-paused": "{title}",
+
+    "max-length": 25,
+
+    "rotate": 90
+  },
+  "group/mediaplayer": {
+    "orientation": "inherit",
+
+    "modules": [
+      "mpris",
+      "cava"
+    ]
+  },
+
+
+
+
+  /*--------------------*/
+  /*   MODULES CENTER   */
+  /*--------------------*/
+
+  "clock": {
+    "format": "{:%H\n%M}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+
+  "hyprland/workspaces": {
+    "format": "{windows}",
+    "format-window-separator": "",
+    "on-click": "activate",
+    "sort-by-number": true,
+
+    "persistent-workspaces": {
+      "*": 6
+    }
+  },
+
+
+
+  /*-------------------*/
+  /*   MODULES RIGHT   */
+  /*------------------*/
+
+  "cpu": {
+    "format": "{usage}%",
+    "tooltip": true,
+    "tooltip-format": "{used}"
+  },
+  "memory": {
+    "format": "{percentage}%",
+    "tooltip": true,
+    "tooltip-format": "{used} / {total}"
+  },
+  "disk": {
+    "interval": 30,
+    "format": "{percentage_used}%",
+    "path": "/",
+    "tooltip": true,
+    "tooltip-format": "{used} / {total}"
+  },
+  "group/hardware": {
+    "orientation": "inherit",
+    "modules": [
+      "cpu",
+      "custom/separator-dash",
+      "memory",
+      "custom/separator-dash",
+      "disk"
+    ]
+  },
+
+  "pulseaudio": {
+    "format": "{volume}%",
+    "format-bluetooth": "{icon} {format_source}",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "on-click": "pavucontrol"
+  },
+  "pulseaudio/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "vertical"
+  },
+  "group/audio": {
+    "orientation": "inherit",
+    "modules": [
+      "pulseaudio/slider",
+      "pulseaudio"
+    ]
+  },
+
+  "custom/power": {
+    "format": "⏻",
+    "on-click": "wlogout",
+    "tooltip": true,
+    "tooltip-format": "Logout Menu"
+  }
+}

@@ -1,0 +1,132 @@
+/*------------*/
+/*   COLORS   */
+/*------------*/
+
+@import 'colors/tokyo-night.css';
+
+* {
+  font-family: "JetBrainsMono Nerd Font Bold";
+  font-size: 15px;
+}
+
+window#waybar {
+  background-color: transparent;
+}
+
+
+
+/* ---------------- */
+/*   LEFT MODULES   */
+/* ---------------- */
+
+#window {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 10px 0px 10px;
+
+  color: @highlight-green;
+  background-color: @grey;
+  border: 1px solid @highlight-green;
+  border-radius: 20px;
+}
+
+#mpris {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 10px 0px 10px;
+
+  color: @highlight-green;
+  background-color: @grey;
+  border: 1px solid @highlight-green;
+  border-radius: 20px;
+
+}
+
+
+
+/* ------------------ */
+/*   CENTER MODULES   */
+/* ------------------ */
+
+#clock {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 10px 0px 10px;
+
+  color: @highlight-pink;
+  background-color: @grey;
+  border: 1px solid @highlight-pink;
+  border-radius: 20px;
+}
+
+#workspaces {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 5px 0px 5px;
+
+  color: @highlight-pink;
+  background-color: @grey;
+  border: 1px solid @highlight-pink;
+  border-radius: 20px;
+}
+#workspaces button {
+  margin: 5px 0px 5px 0px;
+  padding: 0px 0px 0px 0px;
+
+  border: 1px solid @highlight-pink-transparent;
+  border-radius: 20px;
+}
+#workspaces button.active {
+  margin: 5px 0px 5px 0px;
+  padding: 0px 15px 0px 15px;
+
+  background-color: @highlight-pink-transparent;
+  border: 1px solid @highlight-pink;
+  border-radius: 20px;
+}
+#workspaces button.empty {
+  padding: 0px 5px 0px 5px;
+}
+
+
+
+/* ----------------- */
+/*   RIGHT MODULES   */
+/* ----------------- */
+
+#hardware {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 10px 0px 10px;
+
+  color: @highlight-blue;
+  background-color: @grey;
+  border: 1px solid @highlight-blue;
+  border-radius: 20px;
+
+}
+
+#pulseaudio {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 10px 0px 10px;
+
+  color: @highlight-blue;
+  background-color: @grey;
+  border: 1px solid @highlight-blue;
+  border-radius: 20px;
+}
+
+#network {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 10px 0px 10px;
+
+  color: @highlight-blue;
+  background-color: @grey;
+  border: 1px solid @highlight-blue;
+  border-radius: 20px;
+}
+
+#custom-power {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 10px 0px 10px;
+
+  color: @red;
+  background-color: @grey;
+  border: 1px solid @red;
+  border-radius: 20px;
+}
