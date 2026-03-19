@@ -3,7 +3,8 @@
 # General update
 if ! arch-update; then
     echo "no-cachy :("
-    sudo pacman -Syu && yay -Syu
+    sudo pacman -Syu
+    yay -Syu || paru -Syu
 fi
 
 
@@ -13,7 +14,7 @@ fi
 # Needed to install
 sudo pacman -S --needed \
 	neovim \
-	yay
+	paru
 
 
 # Terminal, Web Browser(s), Game launcher, Internet Messanges
