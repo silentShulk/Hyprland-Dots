@@ -10,5 +10,3 @@ starship init fish | source
 
 set -gx EDITOR nvim
 set -gx VISUAL nvim
-
-set -gx GITHUB_MCP_PAT "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"
