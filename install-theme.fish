@@ -47,7 +47,7 @@ printf "\nMaking backups of your configs from ~/.config:\n"
 for app in $rice_elements                                                                                               # For each element in the selected rice
   if test -d ~/.config/$app_config                                                                                      # Test if a config for it already exists
     if test -d ~/.config/$app.bak                                                                                       # If it does also check if a backup for that config already exists
-      rm -rf ~/.config/app.bak                                                                                          # If it does remove that backup
+      rm -rf ~/.config/$app.bak                                                                                         # If it does remove that backup
       mv ~/.config/$app ~/.config/$app.bak                                                                              # And move the current config inside that backup folder
       printf "\tRemoved already present backup folder for $app. Backed up $app config in \"~/.config/$app.bak\"\n"      # And tell the user what was done
     else                                                                                                                # If a config for that up doesn't exist
@@ -76,7 +76,9 @@ printf "\nCopying wallpaper(s) to ~/Pictures/wallpapers folder\n"
 
 cd ./wallpapers                                     # Go into the selected rice's wallpapers folder
 set wallpapers_count (ls -1 | wc -l)                # Count how many wallpapers it contains
-mkdir ~/Pictures/wallpapers/                        # Make a wallpapers folder in ~/Pictures
+if ! test -d ~/Pictures/wallpapers/
+  mkdir ~/Pictures/wallpapers/                        # Make a wallpapers folder in ~/Pictures/
+end
 cp ./* ~/Pictures/wallpapers/                       # Copy the selected rice's wallpapers to the just created folder
 printf "Copied $wallpapers_count wallpapers\n"      # And tell the user what was done
 
