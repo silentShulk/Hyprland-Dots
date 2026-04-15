@@ -45,7 +45,7 @@ set rice_elements (path basename $dotfiles)
 # Making backups of the user's dotfiles
 printf "\nMaking backups of your configs from ~/.config:\n"
 for app in $rice_elements                                                                                               # For each element in the selected rice
-  if test -d ~/.config/$app_config                                                                                      # Test if a config for it already exists
+  if test -d ~/.config/$app                                                                                             # Test if a config for it already exists
     if test -d ~/.config/$app.bak                                                                                       # If it does also check if a backup for that config already exists
       rm -rf ~/.config/$app.bak                                                                                         # If it does remove that backup
       mv ~/.config/$app ~/.config/$app.bak                                                                              # And move the current config inside that backup folder
