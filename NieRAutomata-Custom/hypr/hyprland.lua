@@ -1,0 +1,11 @@
+require("modules.monitors")
+-- my-programs in keybindings
+require("modules.autostart")
+require("modules.envs")
+require("modules.permissions")
+require("modules.look-and-feel")
+require("modules.misc")
+require("modules.input")
+require("modules.keybindings")
+require("modules.window-rules")
+require("modules.layouts")

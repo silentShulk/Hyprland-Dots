@@ -1,0 +1,23 @@
+* {
+    font-family: JetBrains Mono;
+    font-size: 14px;
+}
+
+window#waybar {
+    background-color: transparent;
+}
+
+#workspaces,
+#window,
+#cava,
+#clock,
+#pulseaudio,
+#hardware {
+    margin: 5px;
+    padding: 0px 10px 0px 10px;
+
+    border: 1px solid white;
+    border-radius: 20px;
+
+    background: linear-gradient(135deg, #808080, black);
+}
