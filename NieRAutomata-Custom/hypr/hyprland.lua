@@ -1,5 +1,4 @@
 require("modules.monitors")
--- my-programs in keybindings
 require("modules.autostart")
 require("modules.envs")
 require("modules.permissions")

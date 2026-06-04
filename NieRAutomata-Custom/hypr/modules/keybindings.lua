@@ -25,7 +25,7 @@ local fullscreenBind = hl.bind(mainMod.. "+ SHIFT + F", hl.dsp.window.fullscreen
 
 local logoutBind = hl.bind(mainMod.. "+ M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 
-
+local networkManagerBind = hl.bind(mainMod.. "+ ALT + N", hl.dsp.exec_cmd("~/.config/hypr/scripts/hyprltm-net.sh"))
 local waybarReloadBind = hl.bind(mainMod.. "+ ALT + R", hl.dsp.exec_cmd("~/.config/waybar/reload-waybar.sh"))
 
 
