@@ -33,6 +33,16 @@ hl.window_rule({
     workspace = "5"
 })
 
+hl.window_rule({
+    name = "ata-float",
+    match = {
+        class="^(ata|ATA).*",
+        title="^(ata|ATA).*"
+    },
+
+    float = true
+})
+
 -- Example window rules that are useful
 hl.window_rule({
     -- Ignore maximize requests from all apps. You'll probably like this.

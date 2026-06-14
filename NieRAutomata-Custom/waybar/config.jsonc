@@ -1,13 +1,13 @@
 {
-  "position": "top",
+  "position": "left",
 
-  "margin": "5 5 0 5",
+  "margin": "5 0 5 0",
 
   "layout": "top",
 
   "modules-left": [
     "hyprland/workspaces",
-    "hyprland/window",
+    //"hyprland/window",
     "cava"
   ],
   "modules-center": [
@@ -38,7 +38,9 @@
     "rewrite": {
       "": "Hyprland"
     },
-    "separate-outputs": true
+    "separate-outputs": true,
+
+    "rotate": 90
   },
 
   "cava": {
@@ -63,15 +65,17 @@
     "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
     "actions": {
       "on-click-right": "mode"
-    }
+    },
+
+    "rotate": 90
   },
 
 
 
   // MODULES CENTER
   "clock": {
-    "format": "{:%H:%M}",
-    "format-alt": "{:%A, %d %B - %R}",
+    "format": "{:%H\n%M}",
+    "format-alt": "{:%A\n%d %B}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
       "mode"          : "year",
@@ -121,35 +125,25 @@
     "orientation": "inherit",
     "modules": [
       "cpu",
-      "custom/separator-pipe",
+      "custom/separator-dash",
       "memory",
-      "custom/separator-pipe",
+      "custom/separator-dash",
       "disk"
     ]
   },
   "cpu": {
     "interval": 10,
-    "format": "{usage}% {icon}",
-     "format-icons": [
-          "<span color='#69ff94'>▁</span>", // green
-          "<span color='#2aa9ff'>▂</span>", // blue
-          "<span color='#f8f8f2'>▃</span>", // white
-          "<span color='#f8f8f2'>▄</span>", // white
-          "<span color='#ffffa5'>▅</span>", // yellow
-          "<span color='#ffffa5'>▆</span>", // yellow
-          "<span color='#ff9977'>▇</span>", // orange
-          "<span color='#dd532e'>█</span>"  // red
-     ],
+    "format": "{usage}%",
     "max-length": 10
   },
   "memory": {
     "interval": 30,
-    "format": "{percentage}% ",
+    "format": "{percentage}%",
     "max-length": 10
   },
   "disk": {
   	"interval": 30,
-  	"format": "{specific_free:0.2f} GB",
+  	"format": "{percentage_free} %\n({specific_free:0.0f})",
   	"unit": "GB"
   },
 

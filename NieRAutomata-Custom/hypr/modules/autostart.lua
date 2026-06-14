@@ -18,6 +18,6 @@ hl.on("hyprland.start", function ()
     -- background
     hl.exec_cmd("waybar")
     hl.exec_cmd("awww-daemon")
-    hl.exec_cmd("awww img ~/.config/hypr/wallpapers/automata.png")
+    hl.exec_cmd("awww img ~/.config/hypr/wallpapers/automata2.png")
     hl.exec_cmd("swaync")
 end)
