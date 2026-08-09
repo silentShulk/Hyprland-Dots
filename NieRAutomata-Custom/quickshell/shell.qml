@@ -7,8 +7,14 @@ import Quickshell.Services.Pipewire
 import Quickshell.Hyprland
 import Quickshell.Io
 
+
 PanelWindow {
     id: root
+
+    function iconForAppId(appId) {
+        const entry = DesktopEntries.byId(appId) // ?? DesktopEntries.heuristicLookup(appId)
+        return entry.icon
+    }
 
     // Colors
     property color main: '#d6cab2'
@@ -46,18 +52,27 @@ PanelWindow {
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
         anchors.leftMargin: 16
-
+        spacing: 16
+        
         Repeater {
             model: Hyprland.workspaces
-            Repeater {
-                model: modelData.toplevels
-                IconImage {  
-                    implicitSize: 16
-                    source: {  
-                        const entry = DesktopEntries.heuristicLookup(modelData.lastIpcObject.class)  
-                        return Quickshell.iconPath(entry ? entry.icon : modelData.lastIpcObject.class, "image-missing")  
-                    }  
-                }  
+            
+            RowLayout {
+                spacing: 4
+                
+                Repeater {
+                    model: modelData.toplevels
+                    
+                    IconImage {
+                        implicitSize: 16
+                        source: 
+                        Quickshell.iconPath(
+                            DesktopEntries.byId(
+                                modelData.wayland?.appId
+                            ).icon
+                        )
+                    }
+                }
             }
         }
     }
