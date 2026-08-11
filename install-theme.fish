@@ -8,4 +8,4 @@ cp -r ./rofi/ ~/.config/
 
 cp -r ./ghostty/ ~/.config/
 
-cp -r ./ags/ ~/.config/
+cp -r ./quickshell/ ~/.config/
