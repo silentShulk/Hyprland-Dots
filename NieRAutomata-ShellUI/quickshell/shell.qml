@@ -1,29 +1,23 @@
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
-import Quickshell.Widgets
-
-import Quickshell.Services.Pipewire
-import Quickshell.Hyprland
 import Quickshell.Io
+import Quickshell.Services.Pipewire
+
 
 
 PanelWindow {
     id: root
 
-    function iconForAppId(appId) {
-        const entry = DesktopEntries.byId(appId) // ?? DesktopEntries.heuristicLookup(appId)
-        return entry.icon
-    }
-
     // Colors
-    property color main: '#d6cab2'
-    property color accent: '#706857'
-    property color accentDark: '#504635'
-    property color accentSecondary: '#c76248'
-    property color accentTertiary: '#6eb2a3'
-    property color accentSecondaryDark: '#b65135'
-    property color accentTertiaryDark: '#5da192'
+    readonly property color main: '#d6cab2'
+    readonly property color accent: '#706857'
+    readonly property color accentDark: '#504635'
+    readonly property color accent2: "#736f61"
+    readonly property color accentSecondary: '#c76248'
+    readonly property color accentTertiary: '#6eb2a3'
+    readonly property color accentSecondaryDark: '#b65135'
+    readonly property color accentTertiaryDark: '#5da192'
 
     // Bar properties
     anchors {
@@ -31,12 +25,21 @@ PanelWindow {
         left: true
         right: true
     }
-    height: 32
-    color: root.accentDark
+    
+    height: 54
+    color: '#00000000'
+
+    readonly property int islandsWidth: 256
+    readonly property int islandsPadding: 8
+    readonly property int islandsMargin: 12
+    readonly property int islandsRadius: 4
+    
+    readonly property int fontSize: 14
     
     // Data
     readonly property int volumePercent: Math.round((Pipewire.defaultAudioSink?.audio?.volume ?? 0) * 100)
     readonly property string currentTime: Qt.formatDateTime(clock.date, "hh:mm")
+    readonly property string date: Qt.formatDate(clock.date, "dd.MM.yyyy")
 
     property int cpuUsage: 0
     property real lastCpuTotal: 0
@@ -46,70 +49,60 @@ PanelWindow {
 
     property int diskAvailability: 0
     property int diskFreeSpace: 0
+
+    PwObjectTracker { objects: [Pipewire.defaultAudioSink] }
+
+
     
     // Left
     RowLayout {
         anchors.left: parent.left
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.leftMargin: 16
+        anchors.top: parent.top
+        anchors.leftMargin: root.islandsMargin
+        anchors.topMargin: root.islandsMargin
+
         spacing: 16
-        
-        Repeater {
-            model: Hyprland.workspaces
-            
-            RowLayout {
-                spacing: 4
-                
-                Repeater {
-                    model: modelData.toplevels
-                    
-                    IconImage {
-                        implicitSize: 16
-                        source: 
-                        Quickshell.iconPath(
-                            DesktopEntries.byId(
-                                modelData.wayland?.appId
-                            ).icon
-                        )
-                    }
-                }
-            }
-        }
+
+        HyprlandWorkspaces {}
     }
+
+    
 
     // Center
     RowLayout {
-        anchors.centerIn: parent
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: root.islandsMargin
 
-        Text {
-            text: root.currentTime
-            color: root.main
-        }
+        spacing: 16
+
+        Clock {}
+    
+        NotificationCenter {}
     }
 
+
+    
     // Right
     RowLayout {
         anchors.right: parent.right
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.rightMargin: 16
+        anchors.top: parent.top
+        anchors.rightMargin: root.islandsMargin
+        anchors.topMargin: root.islandsMargin
+        
+        spacing: 16
 
-        Text {
-            text: `${root.volumePercent}%`
-            color: root.main
-        } PwObjectTracker { objects: [Pipewire.defaultAudioSink] }
+        // System Monitor
+        SystemMonitor {}
+    
+        PowerButton {}
+    }
 
-        Text {
-            text: `${root.cpuUsage}%`
-            color: root.main
-        }
-        Text {
-            text: `${root.ramUsage}%`
-            color: root.main
-        }
-        Text {
-            text: `${root.diskAvailability}% (${root.diskFreeSpace})`
-            color: root.main
-        }
+    
+    
+    SystemClock {
+        id: clock
+        precision: SystemClock.Minutes
     }
 
     Process {
@@ -177,10 +170,5 @@ PanelWindow {
             memTracker.running = true
             diskTracker.running = true
         }
-    }
-    
-    SystemClock {
-        id: clock
-        precision: SystemClock.Minutes
     }
 }

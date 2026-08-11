@@ -1,6 +1,6 @@
 # Colors
 
-*Hex* values for Automata and Replicant palettes
+*Hex* values for Automata's and Replicant's palettes
 
 ## Automata
 
