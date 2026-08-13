@@ -2,19 +2,29 @@ import QtQuick
 import QtQuick.Layouts
 
 Rectangle {
-    id: badgeRoot
+    id: badge
     
-    // Define the custom parameter property
     property string text: ""
+    signal badgeClicked(var mouse)
 
     Layout.preferredWidth: 24
     Layout.preferredHeight: 24
 
-    color: root.main
+    color: mouseArea.containsMouse ? root.accent : root.main
     radius: root.islandsRadius
 
     Text {
         anchors.centerIn: parent
-        text: badgeRoot.text
+        text: badge.text
+        font.pixelSize: root.fontSize + 2
+    }
+
+    MouseArea {
+        id: mouseArea
+        
+        anchors.fill: parent
+        
+        cursorShape: Qt.PointingHandCursor
+        onClicked: (mouse) => badge.badgeClicked(mouse)
     }
 }

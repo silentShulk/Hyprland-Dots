@@ -11,6 +11,7 @@ PanelWindow {
 
     // Colors
     readonly property color main: '#d6cab2'
+    readonly property color mainDark: '#b4a890'
     readonly property color accent: '#706857'
     readonly property color accentDark: '#504635'
     readonly property color accent2: "#736f61"
@@ -26,20 +27,22 @@ PanelWindow {
         right: true
     }
     
-    height: 54
+    readonly property int barHeight: 54
+    height: root.barHeight
     color: '#00000000'
 
     readonly property int islandsWidth: 256
     readonly property int islandsPadding: 8
     readonly property int islandsMargin: 12
     readonly property int islandsRadius: 4
+    readonly property int islandsSpacing: 16
     
     readonly property int fontSize: 14
     
     // Data
     readonly property int volumePercent: Math.round((Pipewire.defaultAudioSink?.audio?.volume ?? 0) * 100)
     readonly property string currentTime: Qt.formatDateTime(clock.date, "hh:mm")
-    readonly property string date: Qt.formatDate(clock.date, "dd.MM.yyyy")
+    readonly property string date: Qt.formatDate(clock.date, "dd MMMM  (dd.MM.yy)")
 
     property int cpuUsage: 0
     property real lastCpuTotal: 0
@@ -61,7 +64,7 @@ PanelWindow {
         anchors.leftMargin: root.islandsMargin
         anchors.topMargin: root.islandsMargin
 
-        spacing: 16
+        spacing: root.islandsSpacing
 
         HyprlandWorkspaces {}
     }
@@ -74,7 +77,7 @@ PanelWindow {
         anchors.top: parent.top
         anchors.topMargin: root.islandsMargin
 
-        spacing: 16
+        spacing: root.islandsSpacing
 
         Clock {}
     
@@ -90,9 +93,10 @@ PanelWindow {
         anchors.rightMargin: root.islandsMargin
         anchors.topMargin: root.islandsMargin
         
-        spacing: 16
+        spacing: root.islandsSpacing
 
-        // System Monitor
+        Audio {}
+
         SystemMonitor {}
     
         PowerButton {}
@@ -103,6 +107,10 @@ PanelWindow {
     SystemClock {
         id: clock
         precision: SystemClock.Minutes
+    }
+
+    Calendar {
+        id: calendarPopup
     }
 
     Process {
@@ -170,5 +178,9 @@ PanelWindow {
             memTracker.running = true
             diskTracker.running = true
         }
+    }
+
+    LogoutMenu {
+        id: logoutMenu
     }
 }

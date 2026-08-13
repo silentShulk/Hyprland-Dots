@@ -1,19 +1,20 @@
+import Quickshell
 import QtQuick
 import QtQuick.Layouts
 
 
 
 Rectangle {
-    id: rightIsland
+    id: system
 
     Layout.preferredWidth: root.islandsWidth
-    Layout.preferredHeight: rightLayout.implicitHeight + root.islandsPadding*2
+    Layout.preferredHeight: systemLayout.implicitHeight + root.islandsPadding*2
 
     color: root.accentDark
     radius: root.islandsRadius
     
     RowLayout {
-        id: rightLayout
+        id: systemLayout
         
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
@@ -23,44 +24,26 @@ Rectangle {
         spacing: 12
 
         IslandBadge {
-            text: "O"
+            text: "\u{F04C5}"
+
+            onBadgeClicked: { Quickshell.execDetached(["ghostty", "-e", "btm"]) }
         }
 
         RowLayout {
-            spacing: 2
-            Text {
-                text: `${root.volumePercent}%`
-                font.pixelSize: root.fontSize
-                color: root.main
-            }
-            Text {
-                text: "🕪"
-                font.pixelSize: root.fontSize
-                color: root.main
-            }
-        }
-
-        Text {
-            text: "|"
-            font.pixelSize: root.fontSize
-            color: root.main
-        }
-
-        RowLayout {
-            spacing: 8
+            spacing: 16
             
             Text {
-                text: `${root.cpuUsage}%`
+                text: "\u{F035B}  " + `${root.cpuUsage}%`
                 font.pixelSize: root.fontSize
                 color: root.main
             }
             Text {
-                text: `${root.ramUsage}%`
+                text: "\u{F0EC2}  " + `${root.ramUsage}%`
                 font.pixelSize: root.fontSize
                 color: root.main
             }
             Text {
-                text: `${root.diskAvailability}% (${root.diskFreeSpace})`
+                text: "\u{F02CA}  " + `${root.diskAvailability}% (${root.diskFreeSpace})`
                 font.pixelSize: root.fontSize
                 color: root.main
             }

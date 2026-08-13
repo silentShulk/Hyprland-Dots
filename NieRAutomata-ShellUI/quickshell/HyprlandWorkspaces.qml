@@ -6,27 +6,29 @@ import Quickshell.Widgets
 
 
 
-// Hyprland Workspaces
 Rectangle {
-    id: leftIsland
+    id: workspaces
 
     width: root.islandsWidth
-    height: leftLayout.implicitHeight + root.islandsPadding*2
+    height: workspacesLayout.implicitHeight + root.islandsPadding*2
 
     color: root.accentDark
     radius: root.islandsRadius
     
     RowLayout {
-        id: leftLayout
+        id: workspacesLayout
         
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
         
         anchors.leftMargin: root.islandsPadding
+        
         spacing: 12
 
         IslandBadge {
-            text: "O"
+            text: "\u{F0BAB}"
+
+            onBadgeClicked: { Quickshell.execDetached(["ghostty", "-e", "btm"]) }
         }
         
         RowLayout {

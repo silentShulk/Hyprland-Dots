@@ -1,22 +1,47 @@
+# --- ShellUI Automata Ghostty Theme ---
+
+# Palette 0-7 (Normal)
+# 0: Black ($ata-dark)
 palette = 0 = #101429
-palette = 8 = #32364b
+# 1: Red ($ata-accent-secondary-dark)
+palette = 1 = #b65135
+# 2: Green ($ata-accent-tertiary-dark)
+palette = 2 = #5da192
+# 3: Yellow ($ata-main-dark)
+palette = 3 = #c5b9a1
+# 4: Blue ($ata-dark)
+palette = 4 = #101429
+# 5: Magenta ($ata-accent-secondary-dark)
+palette = 5 = #b65135
+# 6: Cyan ($ata-accent-tertiary-dark)
+palette = 6 = #5da192
+# 7: White ($floralwhite-dark)
+palette = 7 = #eee9e0
 
-palette = 1 = #a54026
+# Palette 8-15 (Bright)
+# 8: Bright Black ($ata-dark-light)
+palette = 8 = #21253a
+# 9: Bright Red ($ata-accent-secondary)
 palette = 9 = #c76248
-
-palette = 6 = #4c9082
+# 10: Bright Green ($ata-accent-tertiary)
+palette = 10 = #6eb2a3
+# 11: Bright Yellow ($ata-main)
+palette = 11 = #d6cab2
+# 12: Bright Blue ($ata-dark-light)
+palette = 12 = #21253a
+# 13: Bright Magenta ($ata-accent-secondary)
+palette = 13 = #c76248
+# 14: Bright Cyan ($ata-accent-tertiary)
 palette = 14 = #6eb2a3
+# 15: Bright White (floralwhite)
+palette = 15 = #fffaf0
 
-palette = 7 = #b5b5b1
-palette = 15 = #d7d7d3
+# Core UI
+background = #504635
+foreground = #d6cab2
 
-
-
-background = #000000 
-foreground = #d6cab2 
-
-cursor-color = #706857  
-cursor-text = #d6cab2 
-
-selection-background = #b5b5b1
-selection-foreground = #706857 
+# Cursor & Selection
+cursor-color = #706857
+cursor-text = #d6cab2
+selection-background = #706857
+selection-foreground = #21253a

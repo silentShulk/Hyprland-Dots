@@ -1,48 +1,43 @@
+import Quickshell
 import QtQuick
 import QtQuick.Layouts
 
 
 
 Rectangle {
-    id: clockdate
-
-    width: root.islandsWidth
-    height: clockdateLayout.implicitHeight + root.islandsPadding*2
+    id: audio
+    
+    width: audioLayout.width + root.islandsPadding*2
+    height: audioLayout.implicitHeight + root.islandsPadding*2
 
     color: root.accentDark
     radius: root.islandsRadius
     
     RowLayout {
-        id: clockdateLayout
-        
+        id: audioLayout
+
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
 
         anchors.leftMargin: root.islandsPadding
-
+        
         spacing: 12
 
         IslandBadge {
-            text: "\uf073"
+            text: "\u{F057E}"
 
-            onBadgeClicked: { calendarPopup.visible = !calendarPopup.visible }
+            onBadgeClicked: { Quickshell.execDetached(["pwvucontrol"]) }
         }
-
+        
         RowLayout {
-            spacing: 8
-            
+            spacing: 2
             Text {
-                text: root.currentTime 
+                text: `${root.volumePercent}%`
                 font.pixelSize: root.fontSize
                 color: root.main
             }
             Text {
-                text: "|"
-                font.pixelSize: root.fontSize
-                color: root.main
-            }
-            Text {
-                text: root.date
+                text: "🕪"
                 font.pixelSize: root.fontSize
                 color: root.main
             }

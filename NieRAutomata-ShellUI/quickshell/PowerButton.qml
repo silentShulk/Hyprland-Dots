@@ -1,24 +1,32 @@
-import Quickshell
 import QtQuick
-import QtQuick.Layouts
 
 
 
 // Power Button
 Rectangle {
-    Layout.preferredWidth: power.height
-    Layout.preferredHeight: power.height
+    id: power
+    
+    width: powerButton.height
+    height: powerButton.height
 
     color: root.accentSecondary
     radius: root.islandsRadius
     
     Text {
-        id: power
+        id: powerButton
 
         anchors.centerIn: parent
         
         text: "⏻"
         font.pixelSize: root.fontSize*2
+        
         color: root.main
+    }
+
+    MouseArea {
+        anchors.fill: parent
+
+        cursorShape: Qt.PointingHandCursor
+        onClicked: { logoutMenu.visible = !logoutMenu.visible }
     }
 }
