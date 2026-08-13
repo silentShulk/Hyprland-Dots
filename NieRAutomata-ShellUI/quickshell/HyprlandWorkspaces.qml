@@ -9,15 +9,13 @@ import Quickshell.Widgets
 Rectangle {
     id: workspaces
 
-    width: root.islandsWidth
-    height: workspacesLayout.implicitHeight + root.islandsPadding*2
+    width: root.islandsWidth + root.islandsPadding*2
+    height: root.islandsHeight + root.islandsPadding*2
 
     color: root.accentDark
     radius: root.islandsRadius
     
     RowLayout {
-        id: workspacesLayout
-        
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
         

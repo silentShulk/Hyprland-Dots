@@ -32,17 +32,21 @@ PanelWindow {
     color: '#00000000'
 
     readonly property int islandsWidth: 256
+    readonly property int islandsHeight: 24
     readonly property int islandsPadding: 8
     readonly property int islandsMargin: 12
-    readonly property int islandsRadius: 4
+    readonly property int islandsRadius: 8
     readonly property int islandsSpacing: 16
-    
+
+    // readonly property string fontFamily: "ITC Benguiat Std"
+    readonly property string fontFamily: "JetBrainsMono Nerd Font Propo"
+    readonly property int fontWeight: Font.Medium
     readonly property int fontSize: 14
     
     // Data
     readonly property int volumePercent: Math.round((Pipewire.defaultAudioSink?.audio?.volume ?? 0) * 100)
     readonly property string currentTime: Qt.formatDateTime(clock.date, "hh:mm")
-    readonly property string date: Qt.formatDate(clock.date, "dd MMMM  (dd.MM.yy)")
+    readonly property string date: Qt.formatDate(clock.date, "ddMMMM (dd.MM.yy)")
 
     property int cpuUsage: 0
     property real lastCpuTotal: 0

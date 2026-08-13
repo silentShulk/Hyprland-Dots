@@ -32,13 +32,19 @@ PanelWindow {
                 spacing: 8
                 Text {
                     Layout.alignment: Qt.AlignHCenter
-                    font.pixelSize: root.fontSize * 4
+                    
                     text: "\u{F0343}"
+                    font.family: root.fontFamily
+                    font.weight: root.fontWeight
+                    font.pixelSize: root.fontSize * 4
                 }
                 Text {
                     Layout.alignment: Qt.AlignHCenter
-                    font.pixelSize: root.fontSize * 3
+                    
                     text: "Logout"
+                    font.family: root.fontFamily
+                    font.weight: root.fontWeight
+                    font.pixelSize: root.fontSize * 3
                 }
             }
 
@@ -63,13 +69,17 @@ PanelWindow {
                 spacing: 8
                 Text {
                     Layout.alignment: Qt.AlignHCenter
-                    font.pixelSize: root.fontSize * 4
                     text: "\u{F0709}"
+                    font.family: root.fontFamily
+                    font.weight: root.fontWeight
+                    font.pixelSize: root.fontSize * 4
                 }
                 Text {
                     Layout.alignment: Qt.AlignHCenter
-                    font.pixelSize: root.fontSize * 3
                     text: "Reboot"
+                    font.family: root.fontFamily
+                    font.weight: root.fontWeight
+                    font.pixelSize: root.fontSize * 3
                 }
             }
 
@@ -94,13 +104,17 @@ PanelWindow {
                 spacing: 8
                 Text {
                     Layout.alignment: Qt.AlignHCenter
+                    text: "⏻"
+                    font.family: root.fontFamily
+                    font.weight: root.fontWeight
                     font.pixelSize: root.fontSize * 4
-                    text: "\u{F0425}"
                 }
                 Text {
                     Layout.alignment: Qt.AlignHCenter
-                    font.pixelSize: root.fontSize * 3
                     text: "Shutdown"
+                    font.family: root.fontFamily
+                    font.weight: root.fontWeight
+                    font.pixelSize: root.fontSize * 3
                 }
             }
 

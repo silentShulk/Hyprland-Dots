@@ -8,14 +8,14 @@ Rectangle {
     id: audio
     
     width: audioLayout.width + root.islandsPadding*2
-    height: audioLayout.implicitHeight + root.islandsPadding*2
+    height: root.islandsHeight + root.islandsPadding*2
 
     color: root.accentDark
     radius: root.islandsRadius
     
     RowLayout {
         id: audioLayout
-
+        
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
 
@@ -33,12 +33,18 @@ Rectangle {
             spacing: 2
             Text {
                 text: `${root.volumePercent}%`
+                font.family: root.fontFamily
+                font.weight: root.fontWeight
                 font.pixelSize: root.fontSize
+                
                 color: root.main
             }
             Text {
                 text: "🕪"
+                font.family: root.fontFamily
+                font.weight: root.fontWeight
                 font.pixelSize: root.fontSize
+                
                 color: root.main
             }
         }

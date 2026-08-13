@@ -7,8 +7,8 @@ Rectangle {
     property string text: ""
     signal badgeClicked(var mouse)
 
-    Layout.preferredWidth: 24
-    Layout.preferredHeight: 24
+    width: 24
+    height: 24
 
     color: mouseArea.containsMouse ? root.accent : root.main
     radius: root.islandsRadius
@@ -16,6 +16,8 @@ Rectangle {
     Text {
         anchors.centerIn: parent
         text: badge.text
+        font.family: root.fontFamily
+        font.weight: root.fontWeight
         font.pixelSize: root.fontSize + 2
     }
 

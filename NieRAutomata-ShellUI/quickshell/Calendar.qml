@@ -55,8 +55,10 @@ PanelWindow {
                         anchors.centerIn: parent
                         
                         text: "‹"
-                        color: root.accentSecondary
+                        font.family: root.fontFamily
                         font.pixelSize: root.fontSize*2
+
+                        color: root.accentSecondary
                     }
 
                     MouseArea {
@@ -78,6 +80,7 @@ PanelWindow {
                     horizontalAlignment: Text.AlignHCenter
                     
                     text: Qt.formatDate(new Date(calendar.selectedYear, calendar.selectedMonth, 1), "MMMM yyyy")
+                    font.family: root.fontFamily
                     font.pixelSize: root.fontSize
                     font.bold: true
 
@@ -94,8 +97,10 @@ PanelWindow {
                         anchors.centerIn: parent
                         
                         text: "›"
-                        color: root.accentTertiary
+                        font.family: root.fontFamily
                         font.pixelSize: root.fontSize*2
+                        
+                        color: root.accentTertiary
                     }
 
                     MouseArea {
@@ -151,6 +156,7 @@ PanelWindow {
                         anchors.centerIn: parent
                         
                         text: parent.model.day
+                        font.family: root.fontFamily
                         font.pixelSize: root.fontSize - 1
                         font.bold: parent.model.today
 

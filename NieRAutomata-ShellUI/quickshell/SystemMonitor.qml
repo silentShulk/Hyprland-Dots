@@ -7,8 +7,8 @@ import QtQuick.Layouts
 Rectangle {
     id: system
 
-    Layout.preferredWidth: root.islandsWidth
-    Layout.preferredHeight: systemLayout.implicitHeight + root.islandsPadding*2
+    width: root.islandsWidth + root.islandsPadding*2
+    height: root.islandsHeight + root.islandsPadding*2
 
     color: root.accentDark
     radius: root.islandsRadius
@@ -33,18 +33,27 @@ Rectangle {
             spacing: 16
             
             Text {
-                text: "\u{F035B}  " + `${root.cpuUsage}%`
+                text: "\u{F035B} " + `${root.cpuUsage}%`
+                font.family: root.fontFamily
+                font.weight: root.fontWeight
                 font.pixelSize: root.fontSize
+                
                 color: root.main
             }
             Text {
-                text: "\u{F0EC2}  " + `${root.ramUsage}%`
+                text: "\u{F0EC2} " + `${root.ramUsage}%`
+                font.family: root.fontFamily
+                font.weight: root.fontWeight
                 font.pixelSize: root.fontSize
+                
                 color: root.main
             }
             Text {
-                text: "\u{F02CA}  " + `${root.diskAvailability}% (${root.diskFreeSpace})`
+                text: "\u{F02CA} " + `${root.diskAvailability}% (${root.diskFreeSpace})`
+                font.family: root.fontFamily
+                font.weight: root.fontWeight
                 font.pixelSize: root.fontSize
+                
                 color: root.main
             }
         }
