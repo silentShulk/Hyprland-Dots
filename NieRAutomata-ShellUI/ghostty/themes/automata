@@ -1,47 +1,42 @@
-# --- ShellUI Automata Ghostty Theme ---
+# --- Normal Palette (0-7) ---
+palette = 0 = #87867c
+palette = 1 = #c76248
+palette = 2 = #475b3d
+palette = 3 = #c4c0a7
+palette = 4 = #32526e
+palette = 5 = #87334f
+palette = 6 = #6eb2a3
+palette = 7 = #d6cab2
+# palette = X = #706857 # Normal Brown
 
-# Palette 0-7 (Normal)
-# 0: Black ($ata-dark)
-palette = 0 = #101429
-# 1: Red ($ata-accent-secondary-dark)
-palette = 1 = #b65135
-# 2: Green ($ata-accent-tertiary-dark)
-palette = 2 = #5da192
-# 3: Yellow ($ata-main-dark)
-palette = 3 = #c5b9a1
-# 4: Blue ($ata-dark)
-palette = 4 = #101429
-# 5: Magenta ($ata-accent-secondary-dark)
-palette = 5 = #b65135
-# 6: Cyan ($ata-accent-tertiary-dark)
-palette = 6 = #5da192
-# 7: White ($floralwhite-dark)
-palette = 7 = #eee9e0
+# --- Bright Palette (8-15) ---
+palette = 8 = #b8b7b1
+palette = 9 = #dfa596
+palette = 10 = #779866
+palette = 11 = #edece4
+palette = 12 = #5486b2
+palette = 13 = #c25e7f
+palette = 14 = #b1d5cd
+palette = 15 = #f8f6f2
+# palette = X = #a09783 # Bright Brown
 
-# Palette 8-15 (Bright)
-# 8: Bright Black ($ata-dark-light)
-palette = 8 = #21253a
-# 9: Bright Red ($ata-accent-secondary)
-palette = 9 = #c76248
-# 10: Bright Green ($ata-accent-tertiary)
-palette = 10 = #6eb2a3
-# 11: Bright Yellow ($ata-main)
-palette = 11 = #d6cab2
-# 12: Bright Blue ($ata-dark-light)
-palette = 12 = #21253a
-# 13: Bright Magenta ($ata-accent-secondary)
-palette = 13 = #c76248
-# 14: Bright Cyan ($ata-accent-tertiary)
-palette = 14 = #6eb2a3
-# 15: Bright White (floralwhite)
-palette = 15 = #fffaf0
+# --- Dark Palette (16-23) ---
+palette = 16 = #4d4c46
+palette = 17 = #7a3625
+palette = 18 = #1d2519
+palette = 19 = #827e61
+palette = 20 = #162330
+palette = 21 = #431a28
+palette = 22 = #395c54
+palette = 23 = #9b8e73
+# palette = X = #38342b # Dark Brown
 
-# Core UI
-background = #504635
+# --- Core UI ---
+background = #706857
 foreground = #d6cab2
 
-# Cursor & Selection
-cursor-color = #706857
+# --- Cursor & Selection ---
+cursor-color = #38342b
 cursor-text = #d6cab2
-selection-background = #706857
-selection-foreground = #21253a
+selection-background = #87867c
+selection-foreground = #f8f6f2

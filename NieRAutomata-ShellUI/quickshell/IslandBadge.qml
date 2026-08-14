@@ -3,14 +3,14 @@ import QtQuick.Layouts
 
 Rectangle {
     id: badge
-    
+
     property string text: ""
     signal badgeClicked(var mouse)
 
     width: 24
     height: 24
 
-    color: mouseArea.containsMouse ? root.accent : root.main
+    color: mouseArea.containsMouse ? root.fgDark : root.fg
     radius: root.islandsRadius
 
     Text {
@@ -23,10 +23,11 @@ Rectangle {
 
     MouseArea {
         id: mouseArea
-        
+
         anchors.fill: parent
-        
+
+        hoverEnabled: true
         cursorShape: Qt.PointingHandCursor
-        onClicked: (mouse) => badge.badgeClicked(mouse)
+        onClicked: mouse => badge.badgeClicked(mouse)
     }
 }

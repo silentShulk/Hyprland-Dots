@@ -4,21 +4,19 @@ import QtQuick.Layouts
 import Quickshell.Io
 import Quickshell.Services.Pipewire
 
-
-
 PanelWindow {
     id: root
 
     // Colors
-    readonly property color main: '#d6cab2'
-    readonly property color mainDark: '#b4a890'
-    readonly property color accent: '#706857'
-    readonly property color accentDark: '#504635'
-    readonly property color accent2: "#736f61"
-    readonly property color accentSecondary: '#c76248'
-    readonly property color accentTertiary: '#6eb2a3'
-    readonly property color accentSecondaryDark: '#b65135'
-    readonly property color accentTertiaryDark: '#5da192'
+    readonly property color bg: '#706857'
+    readonly property color fg: '#d6cab2'
+    readonly property color accent1: '#c76248'
+    readonly property color accent2: '#6eb2a3'
+
+    readonly property color bgDark: '#38342b'
+    readonly property color accent1Dark: '#7a3625'
+    readonly property color accent2Dark: '#395c54'
+    readonly property color fgDark: '#877a61'
 
     // Bar properties
     anchors {
@@ -26,10 +24,10 @@ PanelWindow {
         left: true
         right: true
     }
-    
+
     readonly property int barHeight: 54
     height: root.barHeight
-    color: '#00000000'
+    color: 'transparent'
 
     readonly property int islandsWidth: 256
     readonly property int islandsHeight: 24
@@ -42,7 +40,7 @@ PanelWindow {
     readonly property string fontFamily: "JetBrainsMono Nerd Font Propo"
     readonly property int fontWeight: Font.Medium
     readonly property int fontSize: 14
-    
+
     // Data
     readonly property int volumePercent: Math.round((Pipewire.defaultAudioSink?.audio?.volume ?? 0) * 100)
     readonly property string currentTime: Qt.formatDateTime(clock.date, "hh:mm")
@@ -57,10 +55,10 @@ PanelWindow {
     property int diskAvailability: 0
     property int diskFreeSpace: 0
 
-    PwObjectTracker { objects: [Pipewire.defaultAudioSink] }
+    PwObjectTracker {
+        objects: [Pipewire.defaultAudioSink]
+    }
 
-
-    
     // Left
     RowLayout {
         anchors.left: parent.left
@@ -73,8 +71,6 @@ PanelWindow {
         HyprlandWorkspaces {}
     }
 
-    
-
     // Center
     RowLayout {
         anchors.horizontalCenter: parent.horizontalCenter
@@ -84,30 +80,26 @@ PanelWindow {
         spacing: root.islandsSpacing
 
         Clock {}
-    
+
         NotificationCenter {}
     }
 
-
-    
     // Right
     RowLayout {
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.rightMargin: root.islandsMargin
         anchors.topMargin: root.islandsMargin
-        
+
         spacing: root.islandsSpacing
 
         Audio {}
 
         SystemMonitor {}
-    
+
         PowerButton {}
     }
 
-    
-    
     SystemClock {
         id: clock
         precision: SystemClock.Minutes
@@ -123,36 +115,36 @@ PanelWindow {
 
         stdout: SplitParser {
             onRead: data => {
-                var stats = data.trim().split(/\s+/)  // Separates all cpu values
+                var stats = data.trim().split(/\s+/);  // Separates all cpu values
 
-                var currentIdle = parseFloat(stats[4]) + parseFloat(stats[5]) // Calculates idle ticks since boot: idle + iowait
-                var currentTotal = stats.slice(1, 9).reduce((sum, val) => sum + parseFloat(val), 0) // Calculates total active ticks: sum of all stats
+                var currentIdle = parseFloat(stats[4]) + parseFloat(stats[5]); // Calculates idle ticks since boot: idle + iowait
+                var currentTotal = stats.slice(1, 9).reduce((sum, val) => sum + parseFloat(val), 0); // Calculates total active ticks: sum of all stats
 
-                var deltaIdle = currentIdle - root.lastCpuIdle  // Gets number of idle ticks since last measurement
-                var deltaTotal = currentTotal - root.lastCpuTotal  // Gets number of total ticks since last measurement
+                var deltaIdle = currentIdle - root.lastCpuIdle;  // Gets number of idle ticks since last measurement
+                var deltaTotal = currentTotal - root.lastCpuTotal;  // Gets number of total ticks since last measurement
 
                 // Calculates the cpu usage:
                 // total ticks in 1.5 seconds - idle ticks in 1.5 seconds = active ticks in 1.5 seconds
                 // active ticks in 1.5 seconds / total ticks in 1.5 seconds = percentage of active ticks over total ticks
-                root.cpuUsage = (deltaTotal-deltaIdle)/deltaTotal * 100 
+                root.cpuUsage = (deltaTotal - deltaIdle) / deltaTotal * 100;
 
-                root.lastCpuIdle = currentIdle
-                root.lastCpuTotal = currentTotal
+                root.lastCpuIdle = currentIdle;
+                root.lastCpuTotal = currentTotal;
             }
         }
     }
     Process {
         id: memTracker
         command: ["sh", "-c", "awk '/MemTotal/ {t=$2} /MemAvailable/ {a=$2} END {print t, a}' /proc/meminfo"]
-    
+
         stdout: SplitParser {
             onRead: data => {
-                var stats = data.trim().split(/\s+/)
-    
-                var total = parseFloat(stats[0])
-                var available = parseFloat(stats[1])
-    
-                root.ramUsage = (total - available) / total * 100
+                var stats = data.trim().split(/\s+/);
+
+                var total = parseFloat(stats[0]);
+                var available = parseFloat(stats[1]);
+
+                root.ramUsage = (total - available) / total * 100;
             }
         }
     }
@@ -162,25 +154,25 @@ PanelWindow {
 
         stdout: SplitParser {
             onRead: data => {
-                var stats = data.trim().split(/\s+/)
+                var stats = data.trim().split(/\s+/);
 
-                var total = parseFloat(stats[0])
-                var available = parseFloat(stats[1])
+                var total = parseFloat(stats[0]);
+                var available = parseFloat(stats[1]);
 
-                root.diskAvailability = available / total * 100
-                root.diskFreeSpace = available * 1024 / 1000000000
+                root.diskAvailability = available / total * 100;
+                root.diskFreeSpace = available * 1024 / 1000000000;
             }
         }
     }
-    
+
     Timer {
         interval: 1500
         running: true
         repeat: true
         onTriggered: {
-            cpuTracker.running = true
-            memTracker.running = true
-            diskTracker.running = true
+            cpuTracker.running = true;
+            memTracker.running = true;
+            diskTracker.running = true;
         }
     }
 

@@ -4,13 +4,11 @@ import QtQuick.Layouts
 import Quickshell
 import Quickshell.Wayland
 
-
-
 PanelWindow {
     id: calendar
-    
+
     WlrLayershell.layer: WlrLayer.Overlay
-    exclusionMode: ExclusionMode.Ignore 
+    exclusionMode: ExclusionMode.Ignore
 
     visible: false
 
@@ -30,47 +28,47 @@ PanelWindow {
 
     Rectangle {
         anchors.fill: parent
-        
-        color: Qt.rgba(root.accentDark.r, root.accentDark.g, root.accentDark.b, 0.75)
+
+        color: Qt.rgba(root.bg.r, root.bg.g, root.bg.b, 0.75)
         radius: root.islandsRadius
-        
-        border.color: root.accent
-        border.width: 2
+
+        border.color: root.fg
+        border.width: 1
 
         ColumnLayout {
             anchors.fill: parent
             anchors.margins: 16
-            
+
             spacing: 8
 
             RowLayout {
                 Rectangle {
                     width: 24
                     height: 24
-                    
+
                     color: "transparent"
                     radius: root.islandsRadius
 
                     Text {
                         anchors.centerIn: parent
-                        
+
                         text: "‹"
                         font.family: root.fontFamily
-                        font.pixelSize: root.fontSize*2
+                        font.pixelSize: root.fontSize * 2
 
-                        color: root.accentSecondary
+                        color: root.accent1
                     }
 
                     MouseArea {
                         anchors.fill: parent
-                        
+
                         cursorShape: Qt.PointingHandCursor
                         onClicked: {
                             if (calendar.selectedMonth === 0) {
-                                calendar.selectedMonth = 11
-                                calendar.selectedYear -= 1
+                                calendar.selectedMonth = 11;
+                                calendar.selectedYear -= 1;
                             } else {
-                                calendar.selectedMonth -= 1
+                                calendar.selectedMonth -= 1;
                             }
                         }
                     }
@@ -78,41 +76,41 @@ PanelWindow {
                 Text {
                     Layout.fillWidth: true
                     horizontalAlignment: Text.AlignHCenter
-                    
+
                     text: Qt.formatDate(new Date(calendar.selectedYear, calendar.selectedMonth, 1), "MMMM yyyy")
                     font.family: root.fontFamily
                     font.pixelSize: root.fontSize
                     font.bold: true
 
-                    color: root.main
+                    color: root.fg
                 }
                 Rectangle {
                     width: 24
                     height: 24
-                    
+
                     color: "transparent"
                     radius: root.islandsRadius
 
                     Text {
                         anchors.centerIn: parent
-                        
+
                         text: "›"
                         font.family: root.fontFamily
-                        font.pixelSize: root.fontSize*2
-                        
-                        color: root.accentTertiary
+                        font.pixelSize: root.fontSize * 2
+
+                        color: root.accent2
                     }
 
                     MouseArea {
                         anchors.fill: parent
-                        
+
                         cursorShape: Qt.PointingHandCursor
                         onClicked: {
                             if (calendar.selectedMonth === 0) {
-                                calendar.selectedMonth = 11
-                                calendar.selectedYear -= 1
+                                calendar.selectedMonth = 11;
+                                calendar.selectedYear -= 1;
                             } else {
-                                calendar.selectedMonth -= 1
+                                calendar.selectedMonth -= 1;
                             }
                         }
                     }
@@ -121,7 +119,7 @@ PanelWindow {
 
             DayOfWeekRow {
                 Layout.fillWidth: true
-                
+
                 locale: Qt.locale()
 
                 delegate: Text {
@@ -129,10 +127,10 @@ PanelWindow {
                     text: shortName
                     font.pixelSize: root.fontSize - 3
                     font.bold: true
-                    
+
                     horizontalAlignment: Text.AlignHCenter
 
-                    color: root.main
+                    color: root.fg
                     opacity: 0.5
                 }
             }
@@ -149,18 +147,18 @@ PanelWindow {
                     required property var model
 
                     opacity: model.month === calendar.selectedMonth ? 1.0 : 0.25
-                    color: model.today ? root.accentTertiary : "transparent"
+                    color: model.today ? root.accent2 : "transparent"
                     radius: root.islandsRadius
 
                     Text {
                         anchors.centerIn: parent
-                        
+
                         text: parent.model.day
                         font.family: root.fontFamily
                         font.pixelSize: root.fontSize - 1
                         font.bold: parent.model.today
 
-                        color: model.today ? root.accentSecondary : root.main
+                        color: model.today ? root.accent1 : root.fg
                     }
                 }
             }

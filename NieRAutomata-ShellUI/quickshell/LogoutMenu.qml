@@ -11,7 +11,7 @@ PanelWindow {
     }
 
     visible: false
-    
+
     color: "#cc000000"
 
     RowLayout {
@@ -24,15 +24,15 @@ PanelWindow {
             Layout.preferredWidth: root.islandsWidth
             Layout.preferredHeight: root.islandsWidth * 2
 
-            color: logoutMouseArea.containsMouse ? root.mainDark : root.main
+            color: logoutMouseArea.containsMouse ? root.fgDark : root.fg
             radius: root.islandsRadius * 2
-            
+
             ColumnLayout {
                 anchors.centerIn: parent
                 spacing: 8
                 Text {
                     Layout.alignment: Qt.AlignHCenter
-                    
+
                     text: "\u{F0343}"
                     font.family: root.fontFamily
                     font.weight: root.fontWeight
@@ -40,7 +40,7 @@ PanelWindow {
                 }
                 Text {
                     Layout.alignment: Qt.AlignHCenter
-                    
+
                     text: "Logout"
                     font.family: root.fontFamily
                     font.weight: root.fontWeight
@@ -52,7 +52,9 @@ PanelWindow {
                 id: logoutMouseArea
                 anchors.fill: parent
                 hoverEnabled: true
-                onClicked: { Quickshell.execDetached(["hyprshutdown"]) }
+                onClicked: {
+                    Quickshell.execDetached(["hyprshutdown"]);
+                }
             }
         }
 
@@ -61,9 +63,9 @@ PanelWindow {
             Layout.preferredWidth: root.islandsWidth
             Layout.preferredHeight: root.islandsWidth * 2
 
-            color: rebootMouseArea.containsMouse ? root.accentTertiaryDark : root.accentTertiary
+            color: rebootMouseArea.containsMouse ? root.accent2Dark : root.accent2
             radius: root.islandsRadius * 2
-            
+
             ColumnLayout {
                 anchors.centerIn: parent
                 spacing: 8
@@ -87,7 +89,9 @@ PanelWindow {
                 id: rebootMouseArea
                 anchors.fill: parent
                 hoverEnabled: true
-                onClicked: { Quickshell.execDetached(["systemctl", "reboot"]) }
+                onClicked: {
+                    Quickshell.execDetached(["systemctl", "reboot"]);
+                }
             }
         }
 
@@ -96,9 +100,9 @@ PanelWindow {
             Layout.preferredWidth: root.islandsWidth
             Layout.preferredHeight: root.islandsWidth * 2
 
-            color: shutdownMouseArea.containsMouse ? root.accentSecondaryDark : root.accentSecondary
+            color: shutdownMouseArea.containsMouse ? root.accent1Dark : root.accent1
             radius: root.islandsRadius * 2
-            
+
             ColumnLayout {
                 anchors.centerIn: parent
                 spacing: 8
@@ -122,7 +126,9 @@ PanelWindow {
                 id: shutdownMouseArea
                 anchors.fill: parent
                 hoverEnabled: true
-                onClicked: { Quickshell.execDetached(["systemctl", "poweroff"]) }
+                onClicked: {
+                    Quickshell.execDetached(["systemctl", "poweroff"]);
+                }
             }
         }
     }
