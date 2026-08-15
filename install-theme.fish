@@ -1,11 +1,17 @@
 #! /bin/fish
 
-cp -r ./hypr/ ~/.config/
+for dir in */ .*/
+  set dir_name (path basename $dir)
+  set first_char (string sub -l 1 $dir_name)
 
-cp -r ./waybar/ ~/.config/
+  # Skip current (.) and parent (..) directory entries
+  if contains -- $dir_name "." ".."
+    continue
+  end
 
-cp -r ./rofi/ ~/.config/
-
-cp -r ./ghostty/ ~/.config/
-
-cp -r ./quickshell/ ~/.config/
+  if test $first_char = "."
+    cp -r $dir ~/
+  else
+    cp -r $dir ~/.config/
+  end 
+end 
