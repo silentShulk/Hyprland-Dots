@@ -28,6 +28,10 @@ local logoutBind = hl.bind(mainMod.. "+ M", hl.dsp.exec_cmd("command -v hyprshut
 local networkManagerBind = hl.bind(mainMod.. "+ ALT + N", hl.dsp.exec_cmd("~/.config/hypr/scripts/hyprltm-net.sh"))
 local waybarReloadBind = hl.bind(mainMod.. "+ ALT + R", hl.dsp.exec_cmd("~/.config/waybar/reload-waybar.sh"))
 
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("swayosd-client --output-volume +0"))
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("swayosd-client --output-volume -0"))
+hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("swayosd-client --output-volume mute-toggle"))
+
 
 
 -- Workspace navigation
