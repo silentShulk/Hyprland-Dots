@@ -10,15 +10,15 @@ Rectangle {
     width: 24
     height: 24
 
-    color: mouseArea.containsMouse ? root.fgDark : root.fg
-    radius: root.islandsRadius
+    color: mouseArea.containsMouse ? Theme.fgDark : Theme.fg
+    radius: Theme.islandsRadius
 
     Text {
         anchors.centerIn: parent
         text: badge.text
-        font.family: root.fontFamily
-        font.weight: root.fontWeight
-        font.pixelSize: root.fontSize + 2
+        font.family: Theme.fontFamily
+        font.weight: Theme.fontWeight
+        font.pixelSize: Theme.fontSize + 2
     }
 
     MouseArea {

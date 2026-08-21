@@ -1,180 +1,31 @@
 import Quickshell
 import QtQuick
-import QtQuick.Layouts
-import Quickshell.Io
-import Quickshell.Services.Pipewire
+import Quickshell.Hyprland
 
-PanelWindow {
+ShellRoot {
     id: root
 
-    // Colors
-    readonly property color bg: '#706857'
-    readonly property color fg: '#d6cab2'
-    readonly property color accent1: '#c76248'
-    readonly property color accent2: '#6eb2a3'
-
-    readonly property color bgDark: '#38342b'
-    readonly property color accent1Dark: '#7a3625'
-    readonly property color accent2Dark: '#395c54'
-    readonly property color fgDark: '#877a61'
-
-    // Bar properties
-    anchors {
-        top: true
-        left: true
-        right: true
-    }
-
-    readonly property int barHeight: 54
-    height: root.barHeight
-    color: 'transparent'
-
-    readonly property int islandsWidth: 256
-    readonly property int islandsHeight: 24
-    readonly property int islandsPadding: 8
-    readonly property int islandsMargin: 12
-    readonly property int islandsRadius: 8
-    readonly property int islandsSpacing: 16
-
-    // readonly property string fontFamily: "ITC Benguiat Std"
-    readonly property string fontFamily: "JetBrainsMono Nerd Font Propo"
-    readonly property int fontWeight: Font.Medium
-    readonly property int fontSize: 14
-
-    // Data
-    readonly property int volumePercent: Math.round((Pipewire.defaultAudioSink?.audio?.volume ?? 0) * 100)
-    readonly property string currentTime: Qt.formatDateTime(clock.date, "hh:mm")
-    readonly property string date: Qt.formatDate(clock.date, "ddMMMM (dd.MM.yy)")
-
-    property int cpuUsage: 0
-    property real lastCpuTotal: 0
-    property real lastCpuIdle: 0
-
-    property int ramUsage: 0
-
-    property int diskAvailability: 0
-    property int diskFreeSpace: 0
-
-    PwObjectTracker {
-        objects: [Pipewire.defaultAudioSink]
-    }
-
-    // Left
-    RowLayout {
-        anchors.left: parent.left
-        anchors.top: parent.top
-        anchors.leftMargin: root.islandsMargin
-        anchors.topMargin: root.islandsMargin
-
-        spacing: root.islandsSpacing
-
-        HyprlandWorkspaces {}
-    }
-
-    // Center
-    RowLayout {
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: parent.top
-        anchors.topMargin: root.islandsMargin
-
-        spacing: root.islandsSpacing
-
-        Clock {}
-
-        NotificationCenter {}
-    }
-
-    // Right
-    RowLayout {
-        anchors.right: parent.right
-        anchors.top: parent.top
-        anchors.rightMargin: root.islandsMargin
-        anchors.topMargin: root.islandsMargin
-
-        spacing: root.islandsSpacing
-
-        Audio {}
-
-        SystemMonitor {}
-
-        PowerButton {}
-    }
-
-    SystemClock {
-        id: clock
-        precision: SystemClock.Minutes
-    }
-
+    TopBar {}
     Calendar {
         id: calendarPopup
     }
 
-    Process {
-        id: cpuTracker
-        command: ["sh", "-c", "head -1 /proc/stat"]  // Get cpu stats
+    Loader {
+        id: appLauncherLoader
 
-        stdout: SplitParser {
-            onRead: data => {
-                var stats = data.trim().split(/\s+/);  // Separates all cpu values
-
-                var currentIdle = parseFloat(stats[4]) + parseFloat(stats[5]); // Calculates idle ticks since boot: idle + iowait
-                var currentTotal = stats.slice(1, 9).reduce((sum, val) => sum + parseFloat(val), 0); // Calculates total active ticks: sum of all stats
-
-                var deltaIdle = currentIdle - root.lastCpuIdle;  // Gets number of idle ticks since last measurement
-                var deltaTotal = currentTotal - root.lastCpuTotal;  // Gets number of total ticks since last measurement
-
-                // Calculates the cpu usage:
-                // total ticks in 1.5 seconds - idle ticks in 1.5 seconds = active ticks in 1.5 seconds
-                // active ticks in 1.5 seconds / total ticks in 1.5 seconds = percentage of active ticks over total ticks
-                root.cpuUsage = (deltaTotal - deltaIdle) / deltaTotal * 100;
-
-                root.lastCpuIdle = currentIdle;
-                root.lastCpuTotal = currentTotal;
-            }
-        }
+        active: false
+        source: "AppLauncher.qml"
     }
-    Process {
-        id: memTracker
-        command: ["sh", "-c", "awk '/MemTotal/ {t=$2} /MemAvailable/ {a=$2} END {print t, a}' /proc/meminfo"]
+    GlobalShortcut {
+        name: "toggle-app-launcher"
+        description: "Toggle App Launcher"
 
-        stdout: SplitParser {
-            onRead: data => {
-                var stats = data.trim().split(/\s+/);
-
-                var total = parseFloat(stats[0]);
-                var available = parseFloat(stats[1]);
-
-                root.ramUsage = (total - available) / total * 100;
-            }
-        }
-    }
-    Process {
-        id: diskTracker
-        command: ["sh", "-c", "df / | awk 'NR==2 {print $2, $4}'"]
-
-        stdout: SplitParser {
-            onRead: data => {
-                var stats = data.trim().split(/\s+/);
-
-                var total = parseFloat(stats[0]);
-                var available = parseFloat(stats[1]);
-
-                root.diskAvailability = available / total * 100;
-                root.diskFreeSpace = available * 1024 / 1000000000;
-            }
+        onPressed: {
+            appLauncherLoader.active = !appLauncherLoader.active
         }
     }
 
-    Timer {
-        interval: 1500
-        running: true
-        repeat: true
-        onTriggered: {
-            cpuTracker.running = true;
-            memTracker.running = true;
-            diskTracker.running = true;
-        }
-    }
+    CavaVisualizer {}
 
     LogoutMenu {
         id: logoutMenu

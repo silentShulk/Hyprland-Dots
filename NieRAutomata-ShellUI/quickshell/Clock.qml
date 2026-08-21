@@ -4,17 +4,17 @@ import QtQuick.Layouts
 Rectangle {
     id: clockdate
 
-    width: root.islandsWidth + root.islandsPadding * 2
-    height: root.islandsHeight + root.islandsPadding * 2
+    width: Theme.islandsWidth + Theme.islandsPadding * 2
+    height: Theme.islandsHeight + Theme.islandsPadding * 2
 
-    color: root.bg
-    radius: root.islandsRadius
+    color: Theme.bg
+    radius: Theme.islandsRadius
 
     RowLayout {
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
 
-        anchors.leftMargin: root.islandsPadding
+        anchors.leftMargin: Theme.islandsPadding
 
         spacing: 12
 
@@ -30,28 +30,28 @@ Rectangle {
             spacing: 8
 
             Text {
-                text: root.currentTime
-                font.family: root.fontFamily
-                font.weight: root.fontWeight
-                font.pixelSize: root.fontSize
+                text: SystemStats.currentTime
+                font.family: Theme.fontFamily
+                font.weight: Theme.fontWeight
+                font.pixelSize: Theme.fontSize
 
-                color: root.fg
+                color: Theme.fg
             }
             Text {
                 text: "|"
-                font.family: root.fontFamily
-                font.weight: root.fontWeight
-                font.pixelSize: root.fontSize
+                font.family: Theme.fontFamily
+                font.weight: Theme.fontWeight
+                font.pixelSize: Theme.fontSize
 
-                color: root.fg
+                color: Theme.fg
             }
             Text {
-                text: root.date
-                font.family: root.fontFamily
-                font.weight: root.fontWeight
-                font.pixelSize: root.fontSize
+                text: SystemStats.date
+                font.family: Theme.fontFamily
+                font.weight: Theme.fontWeight
+                font.pixelSize: Theme.fontSize
 
-                color: root.fg
+                color: Theme.fg
             }
         }
     }

@@ -1,24 +1,23 @@
 import QtQuick
 
-// Power Button
 Rectangle {
     id: power
 
-    width: root.islandsHeight + root.islandsPadding * 2
-    height: root.islandsHeight + root.islandsPadding * 2
+    width: Theme.islandsHeight + Theme.islandsPadding * 2
+    height: Theme.islandsHeight + Theme.islandsPadding * 2
 
-    color: root.accent1
-    radius: root.islandsRadius
+    color: Theme.accent1
+    radius: Theme.islandsRadius
 
     Text {
         anchors.centerIn: parent
 
         text: "⏻"
-        font.family: root.fontFamily
-        font.weight: root.fontWeight
-        font.pixelSize: root.fontSize * 2
+        font.family: Theme.fontFamily
+        font.weight: Theme.fontWeight
+        font.pixelSize: Theme.fontSize * 2
 
-        color: root.fg
+        color: Theme.fg
     }
 
     MouseArea {

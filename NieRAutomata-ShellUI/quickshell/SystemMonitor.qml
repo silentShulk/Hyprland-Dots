@@ -5,11 +5,11 @@ import QtQuick.Layouts
 Rectangle {
     id: system
 
-    width: root.islandsWidth + root.islandsPadding * 2
-    height: root.islandsHeight + root.islandsPadding * 2
+    width: Theme.islandsWidth + Theme.islandsPadding * 2
+    height: Theme.islandsHeight + Theme.islandsPadding * 2
 
-    color: root.bg
-    radius: root.islandsRadius
+    color: Theme.bg
+    radius: Theme.islandsRadius
 
     RowLayout {
         id: systemLayout
@@ -17,7 +17,7 @@ Rectangle {
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
 
-        anchors.leftMargin: root.islandsPadding
+        anchors.leftMargin: Theme.islandsPadding
 
         spacing: 12
 
@@ -33,28 +33,28 @@ Rectangle {
             spacing: 16
 
             Text {
-                text: "\u{F035B} " + `${root.cpuUsage}%`
-                font.family: root.fontFamily
-                font.weight: root.fontWeight
-                font.pixelSize: root.fontSize
+                text: "\u{F035B} " + `${SystemStats.cpuUsage}%`
+                font.family: Theme.fontFamily
+                font.weight: Theme.fontWeight
+                font.pixelSize: Theme.fontSize
 
-                color: root.fg
+                color: Theme.fg
             }
             Text {
-                text: "\u{F0EC2} " + `${root.ramUsage}%`
-                font.family: root.fontFamily
-                font.weight: root.fontWeight
-                font.pixelSize: root.fontSize
+                text: "\u{F0EC2} " + `${SystemStats.ramUsage}%`
+                font.family: Theme.fontFamily
+                font.weight: Theme.fontWeight
+                font.pixelSize: Theme.fontSize
 
-                color: root.fg
+                color: Theme.fg
             }
             Text {
-                text: "\u{F02CA} " + `${root.diskAvailability}% (${root.diskFreeSpace})`
-                font.family: root.fontFamily
-                font.weight: root.fontWeight
-                font.pixelSize: root.fontSize
+                text: "\u{F02CA} " + `${SystemStats.diskAvailability}% (${SystemStats.diskFreeSpace})`
+                font.family: Theme.fontFamily
+                font.weight: Theme.fontWeight
+                font.pixelSize: Theme.fontSize
 
-                color: root.fg
+                color: Theme.fg
             }
         }
     }

@@ -5,11 +5,11 @@ import QtQuick.Layouts
 Rectangle {
     id: audio
 
-    width: audioLayout.width + root.islandsPadding * 2
-    height: root.islandsHeight + root.islandsPadding * 2
+    width: audioLayout.width + Theme.islandsPadding * 2
+    height: Theme.islandsHeight + Theme.islandsPadding * 2
 
-    color: root.bg
-    radius: root.islandsRadius
+    color: Theme.bg
+    radius: Theme.islandsRadius
 
     RowLayout {
         id: audioLayout
@@ -17,7 +17,7 @@ Rectangle {
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
 
-        anchors.leftMargin: root.islandsPadding
+        anchors.leftMargin: Theme.islandsPadding
 
         spacing: 12
 
@@ -32,20 +32,20 @@ Rectangle {
         RowLayout {
             spacing: 2
             Text {
-                text: `${root.volumePercent}%`
-                font.family: root.fontFamily
-                font.weight: root.fontWeight
-                font.pixelSize: root.fontSize
+                text: `${SystemStats.volumePercent}%`
+                font.family: Theme.fontFamily
+                font.weight: Theme.fontWeight
+                font.pixelSize: Theme.fontSize
 
-                color: root.fg
+                color: Theme.fg
             }
             Text {
                 text: "🕪"
-                font.family: root.fontFamily
-                font.weight: root.fontWeight
-                font.pixelSize: root.fontSize
+                font.family: Theme.fontFamily
+                font.weight: Theme.fontWeight
+                font.pixelSize: Theme.fontSize
 
-                color: root.fg
+                color: Theme.fg
             }
         }
     }

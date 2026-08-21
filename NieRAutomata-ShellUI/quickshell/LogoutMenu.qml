@@ -21,11 +21,11 @@ PanelWindow {
 
         // Logout
         Rectangle {
-            Layout.preferredWidth: root.islandsWidth
-            Layout.preferredHeight: root.islandsWidth * 2
+            Layout.preferredWidth: Theme.islandsWidth
+            Layout.preferredHeight: Theme.islandsWidth * 2
 
-            color: logoutMouseArea.containsMouse ? root.fgDark : root.fg
-            radius: root.islandsRadius * 2
+            color: logoutMouseArea.containsMouse ? Theme.fgDark : Theme.fg
+            radius: Theme.islandsRadius * 2
 
             ColumnLayout {
                 anchors.centerIn: parent
@@ -34,17 +34,17 @@ PanelWindow {
                     Layout.alignment: Qt.AlignHCenter
 
                     text: "\u{F0343}"
-                    font.family: root.fontFamily
-                    font.weight: root.fontWeight
-                    font.pixelSize: root.fontSize * 4
+                    font.family: Theme.fontFamily
+                    font.weight: Theme.fontWeight
+                    font.pixelSize: Theme.fontSize * 4
                 }
                 Text {
                     Layout.alignment: Qt.AlignHCenter
 
                     text: "Logout"
-                    font.family: root.fontFamily
-                    font.weight: root.fontWeight
-                    font.pixelSize: root.fontSize * 3
+                    font.family: Theme.fontFamily
+                    font.weight: Theme.fontWeight
+                    font.pixelSize: Theme.fontSize * 3
                 }
             }
 
@@ -60,11 +60,11 @@ PanelWindow {
 
         // Reboot
         Rectangle {
-            Layout.preferredWidth: root.islandsWidth
-            Layout.preferredHeight: root.islandsWidth * 2
+            Layout.preferredWidth: Theme.islandsWidth
+            Layout.preferredHeight: Theme.islandsWidth * 2
 
-            color: rebootMouseArea.containsMouse ? root.accent2Dark : root.accent2
-            radius: root.islandsRadius * 2
+            color: rebootMouseArea.containsMouse ? Theme.accent2Dark : Theme.accent2
+            radius: Theme.islandsRadius * 2
 
             ColumnLayout {
                 anchors.centerIn: parent
@@ -72,16 +72,16 @@ PanelWindow {
                 Text {
                     Layout.alignment: Qt.AlignHCenter
                     text: "\u{F0709}"
-                    font.family: root.fontFamily
-                    font.weight: root.fontWeight
-                    font.pixelSize: root.fontSize * 4
+                    font.family: Theme.fontFamily
+                    font.weight: Theme.fontWeight
+                    font.pixelSize: Theme.fontSize * 4
                 }
                 Text {
                     Layout.alignment: Qt.AlignHCenter
                     text: "Reboot"
-                    font.family: root.fontFamily
-                    font.weight: root.fontWeight
-                    font.pixelSize: root.fontSize * 3
+                    font.family: Theme.fontFamily
+                    font.weight: Theme.fontWeight
+                    font.pixelSize: Theme.fontSize * 3
                 }
             }
 
@@ -97,11 +97,11 @@ PanelWindow {
 
         // Shutdown
         Rectangle {
-            Layout.preferredWidth: root.islandsWidth
-            Layout.preferredHeight: root.islandsWidth * 2
+            Layout.preferredWidth: Theme.islandsWidth
+            Layout.preferredHeight: Theme.islandsWidth * 2
 
-            color: shutdownMouseArea.containsMouse ? root.accent1Dark : root.accent1
-            radius: root.islandsRadius * 2
+            color: shutdownMouseArea.containsMouse ? Theme.accent1Dark : Theme.accent1
+            radius: Theme.islandsRadius * 2
 
             ColumnLayout {
                 anchors.centerIn: parent
@@ -109,16 +109,16 @@ PanelWindow {
                 Text {
                     Layout.alignment: Qt.AlignHCenter
                     text: "⏻"
-                    font.family: root.fontFamily
-                    font.weight: root.fontWeight
-                    font.pixelSize: root.fontSize * 4
+                    font.family: Theme.fontFamily
+                    font.weight: Theme.fontWeight
+                    font.pixelSize: Theme.fontSize * 4
                 }
                 Text {
                     Layout.alignment: Qt.AlignHCenter
                     text: "Shutdown"
-                    font.family: root.fontFamily
-                    font.weight: root.fontWeight
-                    font.pixelSize: root.fontSize * 3
+                    font.family: Theme.fontFamily
+                    font.weight: Theme.fontWeight
+                    font.pixelSize: Theme.fontSize * 3
                 }
             }
 

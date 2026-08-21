@@ -12,7 +12,7 @@ local killWindowBind = hl.bind(mainMod.. "+ K", hl.dsp.exec_cmd("hyprctl kill"))
 
 local terminalBind = hl.bind(mainMod.. "+ Return", hl.dsp.exec_cmd(programs.terminal))
 local fileManagerBind = hl.bind(mainMod.. "+ E", hl.dsp.exec_cmd(programs.fileManager))
-local menuBind = hl.bind("ALT".. "+ SPACE", hl.dsp.exec_cmd(programs.menu))
+local menuBind = hl.bind("ALT + SPACE", hl.dsp.global(programs.menu))
 
 local hyprpickerHexBind = hl.bind(mainMod.. "+ P +H", hl.dsp.exec_cmd("hyprpicker -a -n -f hex"))
 local hyprpickerRGBBind = hl.bind(mainMod.. "+ P +R", hl.dsp.exec_cmd("hyprpicker -a -n -f hex -o \"rgb({0}, {1}, {2})\""))

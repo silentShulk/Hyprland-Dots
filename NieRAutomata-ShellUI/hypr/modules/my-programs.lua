@@ -7,7 +7,7 @@ local myprograms = {
     terminal = "ghostty",
     browser = "zen",
     fileManager = "nautilus",
-    menu = "rofi -show drun"
+    menu = "quickshell:toggle-app-launcher"
 }
 
 return myprograms

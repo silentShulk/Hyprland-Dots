@@ -15,7 +15,7 @@ PanelWindow {
     anchors {
         top: true
     }
-    margins.top: root.barHeight + root.islandsMargin
+    margins.top: Theme.barHeight + Theme.islandsMargin
 
     width: 256
     height: 384
@@ -29,10 +29,10 @@ PanelWindow {
     Rectangle {
         anchors.fill: parent
 
-        color: Qt.rgba(root.bg.r, root.bg.g, root.bg.b, 0.75)
-        radius: root.islandsRadius
+        color: Qt.rgba(Theme.bg.r, Theme.bg.g, Theme.bg.b, 0.75)
+        radius: Theme.islandsRadius
 
-        border.color: root.fg
+        border.color: Theme.fg
         border.width: 1
 
         ColumnLayout {
@@ -47,16 +47,16 @@ PanelWindow {
                     height: 24
 
                     color: "transparent"
-                    radius: root.islandsRadius
+                    radius: Theme.islandsRadius
 
                     Text {
                         anchors.centerIn: parent
 
                         text: "‹"
-                        font.family: root.fontFamily
-                        font.pixelSize: root.fontSize * 2
+                        font.family: Theme.fontFamily
+                        font.pixelSize: Theme.fontSize * 2
 
-                        color: root.accent1
+                        color: Theme.accent1
                     }
 
                     MouseArea {
@@ -78,27 +78,27 @@ PanelWindow {
                     horizontalAlignment: Text.AlignHCenter
 
                     text: Qt.formatDate(new Date(calendar.selectedYear, calendar.selectedMonth, 1), "MMMM yyyy")
-                    font.family: root.fontFamily
-                    font.pixelSize: root.fontSize
+                    font.family: Theme.fontFamily
+                    font.pixelSize: Theme.fontSize
                     font.bold: true
 
-                    color: root.fg
+                    color: Theme.fg
                 }
                 Rectangle {
                     width: 24
                     height: 24
 
                     color: "transparent"
-                    radius: root.islandsRadius
+                    radius: Theme.islandsRadius
 
                     Text {
                         anchors.centerIn: parent
 
                         text: "›"
-                        font.family: root.fontFamily
-                        font.pixelSize: root.fontSize * 2
+                        font.family: Theme.fontFamily
+                        font.pixelSize: Theme.fontSize * 2
 
-                        color: root.accent2
+                        color: Theme.accent2
                     }
 
                     MouseArea {
@@ -125,12 +125,12 @@ PanelWindow {
                 delegate: Text {
                     required property string shortName
                     text: shortName
-                    font.pixelSize: root.fontSize - 3
+                    font.pixelSize: Theme.fontSize - 3
                     font.bold: true
 
                     horizontalAlignment: Text.AlignHCenter
 
-                    color: root.fg
+                    color: Theme.fg
                     opacity: 0.5
                 }
             }
@@ -147,18 +147,18 @@ PanelWindow {
                     required property var model
 
                     opacity: model.month === calendar.selectedMonth ? 1.0 : 0.25
-                    color: model.today ? root.accent2 : "transparent"
-                    radius: root.islandsRadius
+                    color: model.today ? Theme.accent2 : "transparent"
+                    radius: Theme.islandsRadius
 
                     Text {
                         anchors.centerIn: parent
 
                         text: parent.model.day
-                        font.family: root.fontFamily
-                        font.pixelSize: root.fontSize - 1
+                        font.family: Theme.fontFamily
+                        font.pixelSize: Theme.fontSize - 1
                         font.bold: parent.model.today
 
-                        color: model.today ? root.accent1 : root.fg
+                        color: model.today ? Theme.accent1 : Theme.fg
                     }
                 }
             }
