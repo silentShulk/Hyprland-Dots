@@ -4,11 +4,11 @@ import QtQuick
 Rectangle {
     id: notification
 
-    width: Theme.islandsHeight + Theme.islandsPadding * 2
-    height: Theme.islandsHeight + Theme.islandsPadding * 2
+    width: topBar.islandsHeight + topBar.islandsPadding * 2
+    height: topBar.islandsHeight + topBar.islandsPadding * 2
 
     color: Theme.bg
-    radius: Theme.islandsRadius
+    radius: topBar.islandsRadius
 
     Text {
         anchors.centerIn: parent

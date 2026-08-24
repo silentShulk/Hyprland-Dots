@@ -11,7 +11,7 @@ Rectangle {
     height: 24
 
     color: mouseArea.containsMouse ? Theme.fgDark : Theme.fg
-    radius: Theme.islandsRadius
+    radius: topBar.islandsRadius
 
     Text {
         anchors.centerIn: parent

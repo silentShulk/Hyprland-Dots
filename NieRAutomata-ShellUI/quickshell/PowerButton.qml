@@ -3,11 +3,11 @@ import QtQuick
 Rectangle {
     id: power
 
-    width: Theme.islandsHeight + Theme.islandsPadding * 2
-    height: Theme.islandsHeight + Theme.islandsPadding * 2
+    width: topBar.islandsHeight + topBar.islandsPadding * 2
+    height: topBar.islandsHeight + topBar.islandsPadding * 2
 
     color: Theme.accent1
-    radius: Theme.islandsRadius
+    radius: topBar.islandsRadius
 
     Text {
         anchors.centerIn: parent

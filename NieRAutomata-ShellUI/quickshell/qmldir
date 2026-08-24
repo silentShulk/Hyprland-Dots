@@ -1,0 +1,4 @@
+module Quickshell
+singleton Theme 1.0 Theme.qml
+singleton SystemStats 1.0 SystemStats.qml
+singleton topBar 1.0 TopBar.qml

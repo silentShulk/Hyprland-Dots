@@ -9,7 +9,7 @@ Singleton {
 
     readonly property int volumePercent: Math.round((Pipewire.defaultAudioSink?.audio?.volume ?? 0) * 100)
     readonly property string currentTime: Qt.formatDateTime(clock.date, "hh:mm")
-    readonly property string date: Qt.formatDate(clock.date, "ddMMMM (dd.MM.yy)")
+    readonly property string date: Qt.formatDate(clock.date, "dd MMM (dd.MM.yy)")
 
     property int cpuUsage: 0
     property real lastCpuTotal: 0

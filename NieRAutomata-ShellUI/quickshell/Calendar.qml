@@ -15,7 +15,6 @@ PanelWindow {
     anchors {
         top: true
     }
-    margins.top: Theme.barHeight + Theme.islandsMargin
 
     implicitWidth: 256
     implicitHeight: 384
@@ -30,7 +29,7 @@ PanelWindow {
         anchors.fill: parent
 
         color: Qt.rgba(Theme.bg.r, Theme.bg.g, Theme.bg.b, 0.75)
-        radius: Theme.islandsRadius
+        radius: topBar.islandsRadius
 
         border.color: Theme.fg
         border.width: 1
@@ -47,7 +46,7 @@ PanelWindow {
                     height: 24
 
                     color: "transparent"
-                    radius: Theme.islandsRadius
+                    radius: topBar.islandsRadius
 
                     Text {
                         anchors.centerIn: parent
@@ -89,7 +88,7 @@ PanelWindow {
                     height: 24
 
                     color: "transparent"
-                    radius: Theme.islandsRadius
+                    radius: topBar.islandsRadius
 
                     Text {
                         anchors.centerIn: parent
@@ -148,7 +147,7 @@ PanelWindow {
 
                     opacity: model.month === calendar.selectedMonth ? 1.0 : 0.25
                     color: model.today ? Theme.accent2 : "transparent"
-                    radius: Theme.islandsRadius
+                    radius: topBar.islandsRadius
 
                     Text {
                         anchors.centerIn: parent

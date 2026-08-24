@@ -12,17 +12,26 @@ PanelWindow {
         right: true
     }
 
-    implicitHeight: Theme.barHeight
+    readonly property int barHeight: 54
+
+    readonly property int islandsWidth: 256
+    readonly property int islandsHeight: 24
+    readonly property int islandsPadding: 8
+    readonly property int islandsMargin: 12
+    readonly property int islandsRadius: 8
+    readonly property int islandsSpacing: 16
+
+    implicitHeight: barHeight
     color: 'transparent'
 
     // Left
     RowLayout {
         anchors.left: parent.left
         anchors.top: parent.top
-        anchors.leftMargin: Theme.islandsMargin
-        anchors.topMargin: Theme.islandsMargin
+        anchors.leftMargin: topBar.islandsMargin
+        anchors.topMargin: topBar.islandsMargin
 
-        spacing: Theme.islandsSpacing
+        spacing: topBar.islandsSpacing
 
         HyprlandWorkspaces {}
     }
@@ -31,9 +40,9 @@ PanelWindow {
     RowLayout {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
-        anchors.topMargin: Theme.islandsMargin
+        anchors.topMargin: topBar.islandsMargin
 
-        spacing: Theme.islandsSpacing
+        spacing: topBar.islandsSpacing
 
         Clock {}
 
@@ -44,10 +53,10 @@ PanelWindow {
     RowLayout {
         anchors.right: parent.right
         anchors.top: parent.top
-        anchors.rightMargin: Theme.islandsMargin
-        anchors.topMargin: Theme.islandsMargin
+        anchors.rightMargin: topBar.islandsMargin
+        anchors.topMargin: topBar.islandsMargin
 
-        spacing: Theme.islandsSpacing
+        spacing: topBar.islandsSpacing
 
         Audio {}
 

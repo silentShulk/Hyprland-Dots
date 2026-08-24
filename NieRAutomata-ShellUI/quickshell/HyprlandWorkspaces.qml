@@ -7,17 +7,17 @@ import Quickshell.Widgets
 Rectangle {
     id: workspaces
 
-    width: Theme.islandsWidth + Theme.islandsPadding * 2
-    height: Theme.islandsHeight + Theme.islandsPadding * 2
+    width: topBar.islandsWidth + topBar.islandsPadding * 2
+    height: topBar.islandsHeight + topBar.islandsPadding * 2
 
     color: Theme.bg
-    radius: Theme.islandsRadius
+    radius: topBar.islandsRadius
 
     RowLayout {
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
 
-        anchors.leftMargin: Theme.islandsPadding
+        anchors.leftMargin: topBar.islandsPadding
 
         spacing: 12
 

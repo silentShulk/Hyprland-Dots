@@ -18,14 +18,4 @@ Singleton {
     readonly property string fontFamily: "JetBrainsMono Nerd Font Propo"
     readonly property int fontWeight: Font.Medium
     readonly property int fontSize: 14
-
-    // Bar
-    readonly property int barHeight: 54
-
-    readonly property int islandsWidth: 256
-    readonly property int islandsHeight: 24
-    readonly property int islandsPadding: 8
-    readonly property int islandsMargin: 12
-    readonly property int islandsRadius: 8
-    readonly property int islandsSpacing: 16
 }
