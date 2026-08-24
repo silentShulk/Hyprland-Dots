@@ -57,9 +57,10 @@ PanelWindow {
     
     Process {
         id: writeConfig
+        running: true
         command: ["sh", "-c",
             "mkdir -p \"$HOME/.cache/quickshell\" && cat > \"$HOME/.cache/quickshell/cava_qs.conf\" <<EOF\n" +
-            "autosens = 1" +
+            "autosens = 1\n"+
             "[general]\n" +
             "bars = " + cava.barCount + "\n" +
             "framerate = 30\n\n" +

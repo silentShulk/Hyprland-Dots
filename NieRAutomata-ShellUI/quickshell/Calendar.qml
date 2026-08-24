@@ -17,8 +17,8 @@ PanelWindow {
     }
     margins.top: Theme.barHeight + Theme.islandsMargin
 
-    width: 256
-    height: 384
+    implicitWidth: 256
+    implicitHeight: 384
 
     color: "transparent"
 
