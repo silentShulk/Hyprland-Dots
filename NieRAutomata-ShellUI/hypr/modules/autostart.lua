@@ -19,5 +19,4 @@ hl.on("hyprland.start", function ()
     -- background
     hl.exec_cmd("awww-daemon")
     hl.exec_cmd("awww img ~/.config/hypr/wallpapers/automata/automata.png")
-    hl.exec_cmd("swaync")
 end)

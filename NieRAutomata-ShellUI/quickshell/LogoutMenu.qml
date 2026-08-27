@@ -21,11 +21,11 @@ PanelWindow {
 
         // Logout
         Rectangle {
-            Layout.preferredWidth: Theme.islandsWidth
-            Layout.preferredHeight: Theme.islandsWidth * 2
+            Layout.preferredWidth: 128
+            Layout.preferredHeight: 256
 
             color: logoutMouseArea.containsMouse ? Theme.fgDark : Theme.fg
-            radius: Theme.islandsRadius * 2
+            radius: 32
 
             ColumnLayout {
                 anchors.centerIn: parent
@@ -60,11 +60,11 @@ PanelWindow {
 
         // Reboot
         Rectangle {
-            Layout.preferredWidth: Theme.islandsWidth
-            Layout.preferredHeight: Theme.islandsWidth * 2
+            Layout.preferredWidth: 128
+            Layout.preferredHeight: 256
 
             color: rebootMouseArea.containsMouse ? Theme.accent2Dark : Theme.accent2
-            radius: Theme.islandsRadius * 2
+            radius: 32
 
             ColumnLayout {
                 anchors.centerIn: parent
@@ -97,11 +97,11 @@ PanelWindow {
 
         // Shutdown
         Rectangle {
-            Layout.preferredWidth: Theme.islandsWidth
-            Layout.preferredHeight: Theme.islandsWidth * 2
+            Layout.preferredWidth: 128
+            Layout.preferredHeight: 256
 
             color: shutdownMouseArea.containsMouse ? Theme.accent1Dark : Theme.accent1
-            radius: Theme.islandsRadius * 2
+            radius: 32
 
             ColumnLayout {
                 anchors.centerIn: parent

@@ -3,6 +3,7 @@ import Quickshell
 import QtQuick
 import Quickshell.Io
 import Quickshell.Services.Pipewire
+import Quickshell.Services.Notifications
 
 Singleton {
     id: systemStats
@@ -20,6 +21,8 @@ Singleton {
     property int diskAvailability: 0
     property int diskFreeSpace: 0
 
+    property alias server: notificationServer
+
     PwObjectTracker {
         objects: [Pipewire.defaultAudioSink]
     }
@@ -27,6 +30,17 @@ Singleton {
     SystemClock {
         id: clock
         precision: SystemClock.Minutes
+    }
+
+    NotificationServer {
+        id: notificationServer
+        imageSupported: true
+        actionsSupported: true
+        inlineReplySupported: true
+        
+        onNotification: notification => {
+            notification.tracked = true
+        }
     }
 
     Process {

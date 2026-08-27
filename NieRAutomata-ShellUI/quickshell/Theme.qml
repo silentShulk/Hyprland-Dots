@@ -18,4 +18,7 @@ Singleton {
     readonly property string fontFamily: "JetBrainsMono Nerd Font Propo"
     readonly property int fontWeight: Font.Medium
     readonly property int fontSize: 14
+
+    // Style
+    readonly property int radius: 16
 }

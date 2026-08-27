@@ -74,8 +74,6 @@ PanelWindow {
                 font.pixelSize: Theme.fontSize
 
                 background: Rectangle {
-                    height: appLauncher.entryHeight
-                    
                     color: Theme.fg
                     topRightRadius: appLauncher.menuRadius - appLauncher.menuMargin/2
                     bottomRightRadius: appLauncher.menuRadius - appLauncher.menuMargin/2

@@ -1,33 +1,28 @@
 import Quickshell
 import QtQuick
-import Quickshell.Hyprland
 
 ShellRoot {
     id: root
 
-    TopBar {}
-    Calendar {
-        id: calendarPopup
+    Loader {
+        id: notificationLoader
+        active: SystemStats.server.trackedNotifications.values.length > 0
+        source: "Notification.qml"
     }
+
+    TopBar {}
+    Calendar { id: calendarPopup }
 
     Loader {
         id: appLauncherLoader
-
         active: false
         source: "AppLauncher.qml"
     }
-    GlobalShortcut {
-        name: "toggle-app-launcher"
-        description: "Toggle App Launcher"
 
-        onPressed: {
-            appLauncherLoader.active = !appLauncherLoader.active
-        }
+    Shortcuts {
+        appLauncherLoader: appLauncherLoader
     }
 
     CavaVisualizer {}
-
-    LogoutMenu {
-        id: logoutMenu
-    }
+    LogoutMenu { id: logoutMenu }
 }
