@@ -1,32 +1,34 @@
-import Quickshell
 import QtQuick
+import QtQuick.Layouts
+import Quickshell
+import Quickshell.Wayland
 
-Rectangle {
-    id: notification
+PanelWindow {
+    WlrLayershell.layer: WlrLayer.Overlay
 
-    width: topBar.islandsHeight + topBar.islandsPadding * 2
-    height: topBar.islandsHeight + topBar.islandsPadding * 2
-
-    color: Theme.bg
-    radius: topBar.islandsRadius
-
-    Text {
-        anchors.centerIn: parent
-
-        text: "\uf0f3"
-        font.family: Theme.fontFamily
-        font.weight: Theme.fontWeight
-        font.pixelSize: Theme.fontSize * 2
-
-        color: Theme.fg
+    anchors {
+        top: true
+        left: true
+    }
+    margins {
+        top: 10
     }
 
-    MouseArea {
-        anchors.fill: parent
+    implicitWidth: notifications.width
+    implicitHeight: notifications.height
 
-        cursorShape: Qt.PointingHandCursor
-        onClicked: {
-            Quickshell.execDetached(["swaync-client", "-t"]);
+    color: "transparent"
+
+    ColumnLayout {
+        id: notifications
+
+        Repeater {
+            model: [...SystemStats.server.trackedNotifications.values].reverse()
+
+            NotificationPopUp {
+                required property var modelData
+                receivedNotification: modelData
+            }
         }
     }
 }

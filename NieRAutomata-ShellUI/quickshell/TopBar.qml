@@ -46,7 +46,7 @@ PanelWindow {
 
         Clock {}
 
-        NotificationCenter {}
+        NotificationCenterButton {}
     }
 
     // Right

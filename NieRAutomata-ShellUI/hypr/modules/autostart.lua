@@ -13,7 +13,7 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd("qs -p ~/.config/quickshell/shell.qml")
     -- my programs
     hl.exec_cmd(programs.terminal)
-    hl.exec_cmd("zen-browser")
+    hl.exec_cmd(programs.browser)
     hl.exec_cmd("steam")
     hl.exec_cmd("discord")
     -- background

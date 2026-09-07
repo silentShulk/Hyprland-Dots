@@ -16,6 +16,9 @@ PanelWindow {
     anchors {
         top: true
     }
+    margins {
+        top: topBar.barHeight + topBar.islandsMargin
+    }
 
     implicitWidth: 256
     implicitHeight: 384

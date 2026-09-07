@@ -10,7 +10,7 @@ ShellRoot {
     Loader {
         id: notificationLoader
         active: SystemStats.server.trackedNotifications.values.length > 0
-        source: "Notification.qml"
+        source: "NotificationCenter.qml"
     }
 
     Loader {
