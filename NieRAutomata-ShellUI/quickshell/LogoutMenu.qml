@@ -21,8 +21,8 @@ PanelWindow {
 
         // Logout
         Rectangle {
-            Layout.preferredWidth: 128
-            Layout.preferredHeight: 256
+            Layout.preferredWidth: 256
+            Layout.preferredHeight: 512
 
             color: logoutMouseArea.containsMouse ? Theme.fgDark : Theme.fg
             radius: 32
@@ -60,8 +60,8 @@ PanelWindow {
 
         // Reboot
         Rectangle {
-            Layout.preferredWidth: 128
-            Layout.preferredHeight: 256
+            Layout.preferredWidth: 256
+            Layout.preferredHeight: 512
 
             color: rebootMouseArea.containsMouse ? Theme.accent2Dark : Theme.accent2
             radius: 32
@@ -97,8 +97,8 @@ PanelWindow {
 
         // Shutdown
         Rectangle {
-            Layout.preferredWidth: 128
-            Layout.preferredHeight: 256
+            Layout.preferredWidth: 256
+            Layout.preferredHeight: 512
 
             color: shutdownMouseArea.containsMouse ? Theme.accent1Dark : Theme.accent1
             radius: 32
