@@ -9,15 +9,14 @@ Rectangle {
     color: Theme.accent1
     radius: topBar.islandsRadius
 
-    Text {
+    IslandBadge {
         anchors.centerIn: parent
-
-        text: "⏻"
-        font.family: Theme.fontFamily
-        font.weight: Theme.fontWeight
-        font.pixelSize: Theme.fontSize * 2
-
-        color: Theme.fg
+        
+        icon: "settings_power"
+        
+        background: false
+        iconColor: Theme.fg
+        fontSizeMultiplier: 2
     }
 
     MouseArea {

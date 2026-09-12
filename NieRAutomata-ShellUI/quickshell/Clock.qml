@@ -19,7 +19,7 @@ Rectangle {
         spacing: 12
 
         IslandBadge {
-            text: "\uf073"
+            icon: "calendar_month"
 
             onBadgeClicked: {
                 calendarPopup.visible = !calendarPopup.visible;

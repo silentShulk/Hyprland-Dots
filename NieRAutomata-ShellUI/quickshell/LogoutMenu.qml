@@ -29,19 +29,19 @@ PanelWindow {
 
             ColumnLayout {
                 anchors.centerIn: parent
-                spacing: 8
-                Text {
+                spacing: 100
+                
+                IslandBadge {
                     Layout.alignment: Qt.AlignHCenter
-
-                    text: "\u{F0343}"
-                    font.family: Theme.fontFamily
-                    font.weight: Theme.fontWeight
-                    font.pixelSize: Theme.fontSize * 4
+                    icon: "logout"
+                    
+                    background: false
+                    fontSizeMultiplier: 10
                 }
                 Text {
                     Layout.alignment: Qt.AlignHCenter
-
                     text: "Logout"
+                    
                     font.family: Theme.fontFamily
                     font.weight: Theme.fontWeight
                     font.pixelSize: Theme.fontSize * 3
@@ -68,17 +68,19 @@ PanelWindow {
 
             ColumnLayout {
                 anchors.centerIn: parent
-                spacing: 8
-                Text {
+                spacing: 100
+                
+                IslandBadge {
                     Layout.alignment: Qt.AlignHCenter
-                    text: "\u{F0709}"
-                    font.family: Theme.fontFamily
-                    font.weight: Theme.fontWeight
-                    font.pixelSize: Theme.fontSize * 4
+                    icon: "rotate_left"
+                    
+                    background: false
+                    fontSizeMultiplier: 10
                 }
                 Text {
                     Layout.alignment: Qt.AlignHCenter
                     text: "Reboot"
+                    
                     font.family: Theme.fontFamily
                     font.weight: Theme.fontWeight
                     font.pixelSize: Theme.fontSize * 3
@@ -105,17 +107,19 @@ PanelWindow {
 
             ColumnLayout {
                 anchors.centerIn: parent
-                spacing: 8
-                Text {
+                spacing: 100
+                
+                IslandBadge {
                     Layout.alignment: Qt.AlignHCenter
-                    text: "⏻"
-                    font.family: Theme.fontFamily
-                    font.weight: Theme.fontWeight
-                    font.pixelSize: Theme.fontSize * 4
+                    icon: "power_settings_circle"
+                    
+                    background: false
+                    fontSizeMultiplier: 10
                 }
                 Text {
                     Layout.alignment: Qt.AlignHCenter
                     text: "Shutdown"
+                    
                     font.family: Theme.fontFamily
                     font.weight: Theme.fontWeight
                     font.pixelSize: Theme.fontSize * 3

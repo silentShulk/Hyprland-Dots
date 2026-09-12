@@ -22,7 +22,12 @@ Rectangle {
         spacing: 12
 
         IslandBadge {
-            text: "\u{F057E}"
+            icon: if (SystemStats.volumePercent == 0)
+                    return "volume_off"
+                else if (SystemStats.volumePercent > 0 && SystemStats.volumePercent < 50)
+                    return "volume_down"
+                else
+                    return "volume_up"
 
             onBadgeClicked: {
                 Quickshell.execDetached(["pwvucontrol"]);
@@ -33,14 +38,6 @@ Rectangle {
             spacing: 2
             Text {
                 text: `${SystemStats.volumePercent}%`
-                font.family: Theme.fontFamily
-                font.weight: Theme.fontWeight
-                font.pixelSize: Theme.fontSize
-
-                color: Theme.fg
-            }
-            Text {
-                text: "🕪"
                 font.family: Theme.fontFamily
                 font.weight: Theme.fontWeight
                 font.pixelSize: Theme.fontSize

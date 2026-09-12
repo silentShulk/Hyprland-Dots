@@ -22,7 +22,7 @@ Rectangle {
         spacing: 12
 
         IslandBadge {
-            text: "\u{F0BAB}"
+            icon: "apps"
 
             onBadgeClicked: {
                 Quickshell.execDetached(["missioncenter"]);

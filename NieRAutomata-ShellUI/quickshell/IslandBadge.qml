@@ -1,24 +1,29 @@
 import QtQuick
-import QtQuick.Layouts
 
 Rectangle {
     id: badge
 
-    property string text: ""
+    required property string icon
+    property bool background: true
+    property color iconColor: "black"
+    property real fontSizeMultiplier: 1
     signal badgeClicked(var mouse)
 
     width: 24
     height: 24
 
-    color: mouseArea.containsMouse ? Theme.fgDark : Theme.fg
+    color: background ? (mouseArea.containsMouse ? Theme.fgDark : Theme.fg) : "transparent"
     radius: topBar.islandsRadius
 
     Text {
         anchors.centerIn: parent
-        text: badge.text
-        font.family: Theme.fontFamily
-        font.weight: Theme.fontWeight
-        font.pixelSize: Theme.fontSize + 2
+        
+        text: badge.icon
+        color: badge.iconColor
+        
+        font.family: Theme.iconFontFamily
+        font.variableAxes: Theme.iconAxes
+        font.pixelSize: Theme.iconFontSize * badge.fontSizeMultiplier
     }
 
     MouseArea {
