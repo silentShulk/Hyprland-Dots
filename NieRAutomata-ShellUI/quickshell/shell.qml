@@ -4,13 +4,23 @@ import QtQuick
 ShellRoot {
     id: root
 
+    Shortcuts {
+        appLauncherLoader: appLauncherLoader
+        notificationsCenterLoader: notificationsCenterLoader
+    }
+
     TopBar {}
     Calendar { id: calendarPopup }
 
     Loader {
-        id: notificationLoader
+        id: notificationsLoader
         active: SystemStats.server.trackedNotifications.values.length > 0
-        source: "NotificationCenter.qml"
+        source: "NotificationsManager.qml" 
+    }
+    Loader {
+        id: notificationsCenterLoader
+        active: false
+        source: "NotificationsCenter.qml"
     }
 
     Loader {
@@ -19,10 +29,7 @@ ShellRoot {
         source: "AppLauncher.qml"
     }
 
-    Shortcuts {
-        appLauncherLoader: appLauncherLoader
-    }
-
     CavaVisualizer {}
+    
     LogoutMenu { id: logoutMenu }
 }

@@ -21,7 +21,12 @@ Singleton {
     property int diskAvailability: 0
     property int diskFreeSpace: 0
 
-    property alias server: notificationServer
+    ListModel {
+        id: notificationHistoryModel
+    }
+    property alias notificationHistory: notificationHistoryModel
+    property alias server: notificationsServer
+    property bool doNotDisturb: false
 
     PwObjectTracker {
         objects: [Pipewire.defaultAudioSink]
@@ -33,13 +38,36 @@ Singleton {
     }
 
     NotificationServer {
-        id: notificationServer
+        id: notificationsServer
         imageSupported: true
         actionsSupported: true
         inlineReplySupported: true
         
         onNotification: notification => {
-            notification.tracked = true
+            if (!systemStats.doNotDisturb || notification.urgency == NotificationUrgency.Critical) {
+                notification.tracked = true
+            }
+
+            notificationHistoryModel.append({
+                notifId: notification.id,
+                summary: notification.summary,
+                body: notification.body,
+                appIcon: notification.appIcon,
+                image: notification.image
+            })
+
+            notification.closed.connect(reason => {
+                if (reason == NotificationCloseReason.Dismissed)
+                    systemStats.removeFromHistory(notification.id)
+            })
+        }
+    }
+    function removeFromHistory(notifId) {
+        for (let i=0; i<notificationHistoryModel.count; i++) {
+            if (notificationHistoryModel.get(i).notifId == notifId) {
+                notificationHistoryModel.remove(i)
+                return
+            }
         }
     }
 

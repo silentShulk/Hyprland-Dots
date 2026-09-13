@@ -2,12 +2,16 @@ import QtQuick
 import Quickshell
 import QtQuick.Layouts
 import Quickshell.Widgets
-import Quickshell.Services.Notifications
 
 Rectangle {
     id: notificationPopUp
 
-    required property Notification receivedNotification;
+    required property string notifId
+    required property string summary
+    required property string body
+    required property string appIcon
+    required property string image
+    signal dismissed()
 
     NumberAnimation on x {
         from: -notificationPopUp.implicitWidth
@@ -33,13 +37,13 @@ Rectangle {
             spacing: 12
             
             IconImage {
-                source: notificationPopUp.receivedNotification.image != "" ? Quickshell.iconPath(notificationPopUp.receivedNotification.image) : Quickshell.iconPath(notificationPopUp.receivedNotification.appIcon)
+                source: notificationPopUp.image != "" ? Quickshell.iconPath(notificationPopUp.image) : Quickshell.iconPath(notificationPopUp.appIcon)
                 Layout.preferredWidth: 45
                 Layout.preferredHeight: 45
             }
 
             Text {
-                text: notificationPopUp.receivedNotification.summary
+                text: notificationPopUp.summary
                 
                 Layout.fillWidth: true
                 
@@ -54,7 +58,7 @@ Rectangle {
         }
 
         Text {
-            text: notificationPopUp.receivedNotification.body
+            text: notificationPopUp.body
             
             Layout.fillWidth: true
             
@@ -89,18 +93,7 @@ Rectangle {
 
             hoverEnabled: true
             cursorShape: Qt.PointingHandCursor
-            onClicked: notificationPopUp.receivedNotification.dismiss()
+            onClicked: notificationPopUp.dismissed()
         }
-    }
-
-    Timer {
-        interval: {
-            if (notificationPopUp.receivedNotification.expireTimeout > 0) return notificationPopUp.receivedNotification.expireTimeout
-            if (notificationPopUp.receivedNotification.expireTimeout === -1) return 3000
-            return 0
-        }
-        running: interval > 0
-        repeat: false
-        onTriggered: notificationPopUp.receivedNotification.expire()
     }
 }

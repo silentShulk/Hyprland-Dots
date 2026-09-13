@@ -7,13 +7,16 @@ Rectangle {
     property bool background: true
     property color iconColor: "black"
     property real fontSizeMultiplier: 1
+    property int widthOverride: 24
+    property int heightOverride: 24
+    
     signal badgeClicked(var mouse)
 
-    width: 24
-    height: 24
+    implicitWidth: widthOverride
+    implicitHeight: heightOverride
 
     color: background ? (mouseArea.containsMouse ? Theme.fgDark : Theme.fg) : "transparent"
-    radius: topBar.islandsRadius
+    radius: Theme.radius /2
 
     Text {
         anchors.centerIn: parent

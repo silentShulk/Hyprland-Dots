@@ -13,7 +13,7 @@ Rectangle {
     IslandBadge {
         anchors.centerIn: parent
         
-        icon: SystemStats.server.trackedNotifications.values.length > 0 ? "notifications_unread" : "notifications"
+        icon: SystemStats.notificationHistory.count > 0 ? "notifications_unread" : "notifications"
         
         background: false
         iconColor: Theme.fg
@@ -25,7 +25,7 @@ Rectangle {
 
         cursorShape: Qt.PointingHandCursor
         onClicked: {
-            Quickshell.execDetached(["swaync-client", "-t"]);
+            // Show NotificationCenter
         }
     }
 }

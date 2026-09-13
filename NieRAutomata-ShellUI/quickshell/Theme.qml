@@ -10,9 +10,9 @@ Singleton {
     readonly property color accent2: '#6eb2a3'
 
     readonly property color bgDark: '#38342b'
+    readonly property color fgDark: '#877a61'
     readonly property color accent1Dark: '#7a3625'
     readonly property color accent2Dark: '#395c54'
-    readonly property color fgDark: '#877a61'
 
     // Typography
     readonly property string fontFamily: "JetBrainsMono Nerd Font Propo"
