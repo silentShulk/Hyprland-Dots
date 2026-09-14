@@ -19,11 +19,13 @@ Rectangle {
         duration: 250
     }
     
-    implicitWidth: 318
-    implicitHeight: 128
+    implicitWidth: 350
+    implicitHeight: 150
         
-    color: Theme.bg
     radius: Theme.radius
+    color: Theme.bg
+    border.width: 5
+    border.color: Theme.fgDark
 
     ColumnLayout {
         id: notificationContent

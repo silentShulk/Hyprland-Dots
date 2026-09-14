@@ -26,7 +26,7 @@ PanelWindow {
 
     Rectangle {
         anchors.fill: parent
-        
+
         color: Theme.bg
         radius: Theme.radius
 
@@ -36,56 +36,55 @@ PanelWindow {
             anchors.bottomMargin: 20
             anchors.leftMargin: 20
             anchors.rightMargin: 20
-            
+
             spacing: 40
 
             ColumnLayout {
                 Layout.alignment: Qt.AlignHCenter
-                
+
                 spacing: 20
 
                 Text {
                     Layout.alignment: Qt.AlignHCenter
-    
+
                     text: "Notification Center"
-    
+
                     font.family: Theme.fontFamily
                     font.weight: Font.Bold
-                    font.pixelSize: Theme.fontSize *2
-    
+                    font.pixelSize: Theme.fontSize * 2
+
                     color: Theme.fg
                 }
                 Rectangle {
                     Layout.alignment: Qt.AlignHCenter
-                    
-                    implicitWidth: notificationsCenter.width - notificationsCenter.width /7.5
+
+                    implicitWidth: notificationsCenter.width - notificationsCenter.width / 7.5
                     implicitHeight: 2
 
                     color: Theme.fg
                 }
             }
-            
+
             RowLayout {
                 spacing: 10
-                
+
                 Text {
                     text: "Do not disturb"
-            
+
                     font.family: Theme.fontFamily
                     font.weight: Theme.fontWeight
                     font.pixelSize: Theme.fontSize
-            
+
                     Layout.alignment: Qt.AlignVCenter
                 }
-            
+
                 Switch {
                     id: dndSwitch
                     checked: SystemStats.doNotDisturb
                     onToggled: SystemStats.doNotDisturb = checked
-            
+
                     Layout.alignment: Qt.AlignVCenter
-            
-                    
+
                     indicator: SwitchToggle {
                         checked: dndSwitch.checked
                         anchors.verticalCenter: parent.verticalCenter
@@ -96,24 +95,24 @@ PanelWindow {
 
             ScrollView {
                 Layout.fillWidth: true
-                Layout.fillHeight: true   // <- this now claims the leftover space instead of a bare Item
+                Layout.fillHeight: true
                 clip: true
-        
+
                 ColumnLayout {
                     width: parent.width
-                    spacing: 20
-        
+                    spacing: 10
+
                     Repeater {
-                        model: SystemStats.notificationHistory
+                        model: SystemStats.notificationHistory.reverse()
                         NotificationPopUp {
                             required property var modelData
-        
+
                             onDismissed: SystemStats.removeFromHistory(modelData.notifId)
                         }
                     }
                 }
             }
-            
+
             IslandBadge {
                 icon: "mark_chat_read"
 
@@ -122,8 +121,8 @@ PanelWindow {
                 fontSizeMultiplier: 2
 
                 onBadgeClicked: {
-                    for (let i=0; i<SystemStats.notificationHistory.count; i++) {
-                        SystemStats.removeFromHistory(SystemStats.notificationHistory.get)
+                    for (let i = SystemStats.notificationHistory.count - 1; i >= 0; i--) {
+                        SystemStats.removeFromHistory(SystemStats.notificationHistory.get(i).notifId);
                     }
                 }
             }
