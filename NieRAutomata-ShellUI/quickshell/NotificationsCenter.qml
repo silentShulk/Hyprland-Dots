@@ -93,21 +93,38 @@ PanelWindow {
                 }
             }
 
-            ScrollView {
+            Rectangle {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
+                
+                border.color: Theme.bgDark
+                border.width: 2
+
+                radius: Theme.radius
+                color: "transparent"
+
                 clip: true
 
-                ColumnLayout {
-                    width: parent.width
-                    spacing: 10
+                ScrollView {
+                    id: notifScrollView
 
-                    Repeater {
-                        model: SystemStats.notificationHistory.reverse()
-                        NotificationPopUp {
-                            required property var modelData
+                    anchors.fill: parent
+                    anchors.margins: 8
 
-                            onDismissed: SystemStats.removeFromHistory(modelData.notifId)
+                    clip: true
+                    ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+
+                    ColumnLayout {
+                        width: notifScrollView.availableWidth
+                        spacing: 10
+
+                        Repeater {
+                            model: SystemStats.notificationHistory
+                            NotificationPopUp {
+                                required property var modelData
+
+                                onDismissed: SystemStats.removeFromHistory(modelData.notifId)
+                            }
                         }
                     }
                 }

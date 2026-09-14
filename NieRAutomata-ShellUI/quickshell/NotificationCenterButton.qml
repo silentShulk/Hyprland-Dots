@@ -25,7 +25,7 @@ Rectangle {
 
         cursorShape: Qt.PointingHandCursor
         onClicked: {
-            // Show NotificationCenter
+            
         }
     }
 }

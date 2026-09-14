@@ -48,7 +48,7 @@ Singleton {
                 notification.tracked = true
             }
 
-            notificationHistoryModel.append({
+            notificationHistoryModel.insert(0, {
                 notifId: notification.id,
                 summary: notification.summary,
                 body: notification.body,
