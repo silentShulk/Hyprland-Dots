@@ -42,6 +42,14 @@ hl.window_rule({
 
     float = true
 })
+hl.window_rule({
+    name = "satty-float",
+    match = {
+        class="com.gabm.satty"
+    },
+
+    float = true
+})
 
 -- Example window rules that are useful
 hl.window_rule({
