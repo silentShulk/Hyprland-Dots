@@ -4,6 +4,9 @@ import Quickshell.Wayland
 import QtQuick.Layouts
 import QtQuick.Controls
 
+import "../Components"
+import "../../Theme"
+
 PanelWindow {
     id: notificationsCenter
 
@@ -37,7 +40,7 @@ PanelWindow {
             anchors.leftMargin: 20
             anchors.rightMargin: 20
 
-            spacing: 40
+            spacing:25
 
             ColumnLayout {
                 Layout.alignment: Qt.AlignHCenter

@@ -1,0 +1,3 @@
+singleton Loaders 1.0 Loaders.qml
+singleton Shortcuts 1.0 Shortcuts.qml
+singleton SystemStats 1.0 SystemStats.qml

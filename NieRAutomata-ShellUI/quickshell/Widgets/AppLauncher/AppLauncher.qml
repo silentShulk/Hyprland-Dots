@@ -4,6 +4,10 @@ import QtQuick.Layouts
 import Quickshell.Wayland
 import Quickshell
 
+import "../../Data"
+import "../Components"
+import "../../Theme"
+
 PanelWindow {
     id: appLauncher
 
@@ -105,14 +109,14 @@ PanelWindow {
                 //     event.accepted = true;
                 // }
 
-                Keys.onEscapePressed: event => { appLauncherLoader.active = false}
+                Keys.onEscapePressed: event => { Loaders.appLauncherLoader.active = false }
                 
                 Keys.onReturnPressed: event => executeSelected()
                 function executeSelected() {
                     if (appLauncher.filteredApps.length > 0) {
                         var app = appLauncher.filteredApps[appLauncher.selectedIndex];
                         app.execute(); 
-                        appLauncherLoader.active = false; 
+                        Loaders.appLauncherLoader.active = false
                     }
                 }
             }

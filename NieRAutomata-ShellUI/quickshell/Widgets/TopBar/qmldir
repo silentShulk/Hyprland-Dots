@@ -1,0 +1,8 @@
+Audio 1.0 Audio.qml
+Calendar 1.0 Calendar.qml
+Clock 1.0 Clock.qml
+HyprlandWorkspaces 1.0 HyprlandWorkspaces.qml
+NotificationCenterButton 1.0 NotificationCenterButton.qml
+PowerButton 1.0 PowerButton.qml
+SystemMonitor 1.0 SystemMonitor.qml
+TopBar 1.0 TopBar.qml

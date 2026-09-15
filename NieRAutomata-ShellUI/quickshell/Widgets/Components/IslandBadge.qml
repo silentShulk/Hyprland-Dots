@@ -1,5 +1,7 @@
 import QtQuick
 
+import "../../Theme"
+
 Rectangle {
     id: badge
 

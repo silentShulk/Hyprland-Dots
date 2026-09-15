@@ -3,6 +3,9 @@ import QtQuick.Layouts
 import Quickshell.Widgets
 import Quickshell
 
+import "../Components"
+import "../../Theme"
+
 Rectangle {
     id: appEntry
     

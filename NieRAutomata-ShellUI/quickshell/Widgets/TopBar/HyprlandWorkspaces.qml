@@ -4,6 +4,10 @@ import QtQuick.Layouts
 import Quickshell.Hyprland
 import Quickshell.Widgets
 
+import "../../Data"
+import "../Components"
+import "../../Theme"
+
 Rectangle {
     id: workspaces
 

@@ -3,6 +3,9 @@ import Quickshell
 import QtQuick.Layouts
 import Quickshell.Widgets
 
+import "../Components"
+import "../../Theme"
+
 Rectangle {
     id: notificationPopUp
 

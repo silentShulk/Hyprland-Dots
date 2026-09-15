@@ -2,6 +2,10 @@ import Quickshell
 import QtQuick
 import QtQuick.Layouts
 
+import "../../Data"
+import "../Components"
+import "../../Theme"
+
 PanelWindow {
     id: topBar
 
@@ -68,5 +72,6 @@ PanelWindow {
     
     Calendar {
         id: calendarPopup
+        visible: false
     }
 }

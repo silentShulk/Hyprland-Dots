@@ -4,6 +4,9 @@ import Quickshell
 import Quickshell.Wayland
 import Quickshell.Io
 
+import "../Components"
+import "../../Theme"
+
 PanelWindow {
     id: cava
 

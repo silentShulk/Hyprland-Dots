@@ -4,6 +4,10 @@ import Quickshell
 import Quickshell.Wayland
 pragma ComponentBehavior: Bound
 
+import "../../Data"
+import "../Components"
+import "../../Theme"
+
 PanelWindow {
     id: notificationsManager
 

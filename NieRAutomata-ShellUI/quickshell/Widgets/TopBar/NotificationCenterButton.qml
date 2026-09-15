@@ -1,6 +1,10 @@
 import Quickshell
 import QtQuick
 
+import "../../Data"
+import "../Components"
+import "../../Theme"
+
 Rectangle {
     id: notification
 
