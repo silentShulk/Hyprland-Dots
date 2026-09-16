@@ -27,7 +27,7 @@ PanelWindow {
             Layout.preferredWidth: 256
             Layout.preferredHeight: 512
 
-            color: logoutMouseArea.containsMouse ? Theme.fgDark : Theme.fg
+            color: logoutMouseArea.containsMouse ? Colors.fgDark : Colors.fg
             radius: 32
 
             ColumnLayout {
@@ -45,9 +45,9 @@ PanelWindow {
                     Layout.alignment: Qt.AlignHCenter
                     text: "Logout"
                     
-                    font.family: Theme.fontFamily
-                    font.weight: Theme.fontWeight
-                    font.pixelSize: Theme.fontSize * 3
+                    font.family: Typography.fontFamily
+                    font.weight: Typography.fontWeight
+                    font.pixelSize: Typography.fontSize * 3
                 }
             }
 
@@ -66,7 +66,7 @@ PanelWindow {
             Layout.preferredWidth: 256
             Layout.preferredHeight: 512
 
-            color: rebootMouseArea.containsMouse ? Theme.accent2Dark : Theme.accent2
+            color: rebootMouseArea.containsMouse ? Colors.accent2Dark : Colors.accent2
             radius: 32
 
             ColumnLayout {
@@ -84,9 +84,9 @@ PanelWindow {
                     Layout.alignment: Qt.AlignHCenter
                     text: "Reboot"
                     
-                    font.family: Theme.fontFamily
-                    font.weight: Theme.fontWeight
-                    font.pixelSize: Theme.fontSize * 3
+                    font.family: Typography.fontFamily
+                    font.weight: Typography.fontWeight
+                    font.pixelSize: Typography.fontSize * 3
                 }
             }
 
@@ -105,7 +105,7 @@ PanelWindow {
             Layout.preferredWidth: 256
             Layout.preferredHeight: 512
 
-            color: shutdownMouseArea.containsMouse ? Theme.accent1Dark : Theme.accent1
+            color: shutdownMouseArea.containsMouse ? Colors.accent1Dark : Colors.accent1
             radius: 32
 
             ColumnLayout {
@@ -123,9 +123,9 @@ PanelWindow {
                     Layout.alignment: Qt.AlignHCenter
                     text: "Shutdown"
                     
-                    font.family: Theme.fontFamily
-                    font.weight: Theme.fontWeight
-                    font.pixelSize: Theme.fontSize * 3
+                    font.family: Typography.fontFamily
+                    font.weight: Typography.fontWeight
+                    font.pixelSize: Typography.fontSize * 3
                 }
             }
 

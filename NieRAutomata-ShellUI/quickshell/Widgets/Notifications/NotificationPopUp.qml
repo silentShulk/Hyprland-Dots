@@ -35,10 +35,10 @@ Rectangle {
     // widthOverride was given - otherwise respect the fixed implicitWidth.
     Layout.fillWidth: widthOverride <= 0
 
-    radius: Theme.radius
-    color: Theme.bg
+    radius: Style.radius
+    color: Colors.bg
     border.width: 5
-    border.color: Theme.fgDark
+    border.color: Colors.fgDark
 
     ColumnLayout {
         id: notificationContent
@@ -63,12 +63,12 @@ Rectangle {
                 Layout.fillWidth: true
                 
                 font.bold: true
-                font.pixelSize: Theme.fontSize
+                font.pixelSize: Typography.fontSize
                 wrapMode: Text.Wrap
                 maximumLineCount: 2
                 elide: Text.ElideRight
                 
-                color: Theme.fg
+                color: Colors.fg
             }
         }
 
@@ -81,7 +81,7 @@ Rectangle {
             maximumLineCount: 3
             elide: Text.ElideRight
             
-            color: Theme.fg
+            color: Colors.fg
         }
     }
 
@@ -94,13 +94,13 @@ Rectangle {
         implicitWidth: 24
         implicitHeight: 24
 
-        color: Theme.accent1
+        color: Colors.accent1
         radius: implicitWidth /2
 
         Text {
             anchors.centerIn: parent
             text: "\u{2715}"
-            font.pixelSize: Theme.fontSize
+            font.pixelSize: Typography.fontSize
         }
 
         MouseArea {

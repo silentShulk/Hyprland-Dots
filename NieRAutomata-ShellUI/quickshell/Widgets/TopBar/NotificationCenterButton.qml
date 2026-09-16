@@ -5,22 +5,17 @@ import "../../Data"
 import "../Components"
 import "../../Theme"
 
-Rectangle {
+TopBarIsland {
     id: notification
 
-    width: topBar.islandsHeight + topBar.islandsPadding * 2
-    height: topBar.islandsHeight + topBar.islandsPadding * 2
-
-    color: Theme.bg
-    radius: topBar.islandsRadius
+    preferredWidth: topBar.islandsHeight
+    square: true
 
     IslandBadge {
-        anchors.centerIn: parent
-        
         icon: SystemStats.notificationHistory.count > 0 ? "notifications_unread" : "notifications"
         
         background: false
-        iconColor: Theme.fg
+        iconColor: Colors.fg
         fontSizeMultiplier: 2
     }
     
@@ -29,7 +24,7 @@ Rectangle {
 
         cursorShape: Qt.PointingHandCursor
         onClicked: {
-            
+            Loaders.notificationsCenterLoader.active = !Loaders.notificationsCenterLoader.active
         }
     }
 }

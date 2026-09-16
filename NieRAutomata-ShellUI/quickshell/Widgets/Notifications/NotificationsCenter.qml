@@ -30,8 +30,8 @@ PanelWindow {
     Rectangle {
         anchors.fill: parent
 
-        color: Theme.bg
-        radius: Theme.radius
+        color: Colors.bg
+        radius: Style.radius
 
         ColumnLayout {
             anchors.fill: parent
@@ -52,11 +52,11 @@ PanelWindow {
 
                     text: "Notification Center"
 
-                    font.family: Theme.fontFamily
+                    font.family: Typography.fontFamily
                     font.weight: Font.Bold
-                    font.pixelSize: Theme.fontSize * 2
+                    font.pixelSize: Typography.fontSize * 2
 
-                    color: Theme.fg
+                    color: Colors.fg
                 }
                 Rectangle {
                     Layout.alignment: Qt.AlignHCenter
@@ -64,7 +64,7 @@ PanelWindow {
                     implicitWidth: notificationsCenter.width - notificationsCenter.width / 7.5
                     implicitHeight: 2
 
-                    color: Theme.fg
+                    color: Colors.fg
                 }
             }
 
@@ -74,9 +74,9 @@ PanelWindow {
                 Text {
                     text: "Do not disturb"
 
-                    font.family: Theme.fontFamily
-                    font.weight: Theme.fontWeight
-                    font.pixelSize: Theme.fontSize
+                    font.family: Typography.fontFamily
+                    font.weight: Typography.fontWeight
+                    font.pixelSize: Typography.fontSize
 
                     Layout.alignment: Qt.AlignVCenter
                 }
@@ -100,10 +100,10 @@ PanelWindow {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 
-                border.color: Theme.bgDark
+                border.color: Colors.bgDark
                 border.width: 2
 
-                radius: Theme.radius
+                radius: Style.radius
                 color: "transparent"
 
                 clip: true
@@ -136,8 +136,8 @@ PanelWindow {
             IslandBadge {
                 icon: "mark_chat_read"
 
-                widthOverride: 48
-                heightOverride: 48
+                preferredWidth: 48
+                preferredHeight: 48
                 fontSizeMultiplier: 2
 
                 onBadgeClicked: {

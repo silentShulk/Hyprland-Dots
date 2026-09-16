@@ -6,48 +6,33 @@ import "../../Data"
 import "../Components"
 import "../../Theme"
 
-Rectangle {
+TopBarIsland {
     id: audio
 
-    width: audioLayout.width + topBar.islandsPadding * 2
-    height: topBar.islandsHeight + topBar.islandsPadding * 2
+    preferredWidth: topBar.islandsWidth / 3
 
-    color: Theme.bg
-    radius: topBar.islandsRadius
+    IslandBadge {
+        icon: if (SystemStats.volumePercent == 0)
+                return "volume_off"
+            else if (SystemStats.volumePercent > 0 && SystemStats.volumePercent < 50)
+                return "volume_down"
+            else
+                return "volume_up"
+
+        onBadgeClicked: {
+            Quickshell.execDetached(["pwvucontrol"]);
+        }
+    }
 
     RowLayout {
-        id: audioLayout
+        spacing: 2
+        Text {
+            text: `${SystemStats.volumePercent}%`
+            font.family: Typography.fontFamily
+            font.weight: Typography.fontWeight
+            font.pixelSize: Typography.fontSize
 
-        anchors.left: parent.left
-        anchors.verticalCenter: parent.verticalCenter
-
-        anchors.leftMargin: topBar.islandsPadding
-
-        spacing: 12
-
-        IslandBadge {
-            icon: if (SystemStats.volumePercent == 0)
-                    return "volume_off"
-                else if (SystemStats.volumePercent > 0 && SystemStats.volumePercent < 50)
-                    return "volume_down"
-                else
-                    return "volume_up"
-
-            onBadgeClicked: {
-                Quickshell.execDetached(["pwvucontrol"]);
-            }
-        }
-
-        RowLayout {
-            spacing: 2
-            Text {
-                text: `${SystemStats.volumePercent}%`
-                font.family: Theme.fontFamily
-                font.weight: Theme.fontWeight
-                font.pixelSize: Theme.fontSize
-
-                color: Theme.fg
-            }
+            color: Colors.fg
         }
     }
 }

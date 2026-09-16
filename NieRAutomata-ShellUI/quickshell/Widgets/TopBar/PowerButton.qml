@@ -4,22 +4,19 @@ import "../../Data"
 import "../Components"
 import "../../Theme"
 
-Rectangle {
+TopBarIsland {
     id: power
 
-    width: topBar.islandsHeight + topBar.islandsPadding * 2
-    height: topBar.islandsHeight + topBar.islandsPadding * 2
-
-    color: Theme.accent1
-    radius: topBar.islandsRadius
+    preferredWidth: topBar.islandsHeight
+    square: true
+    
+    color: Colors.accent1
 
     IslandBadge {
-        anchors.centerIn: parent
-        
         icon: "settings_power"
         
         background: false
-        iconColor: Theme.fg
+        iconColor: Colors.fg
         fontSizeMultiplier: 2
     }
 
@@ -28,7 +25,7 @@ Rectangle {
 
         cursorShape: Qt.PointingHandCursor
         onClicked: {
-            logoutMenu.visible = !logoutMenu.visible;
+            Loaders.logoutMenuLoader.active = !Loaders.logoutMenuLoader.active
         }
     }
 }

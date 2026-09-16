@@ -16,8 +16,8 @@ Rectangle {
     width: appLauncher.menuWidth - appLauncher.menuMargin
     height: entryContent.implicitHeight + (appLauncher.menuPadding *2)
 
-    color: isHighlighted ? Theme.bgDark : Theme.bg
-    border.color: isHighlighted ? Theme.fg : "transparent"
+    color: isHighlighted ? Colors.bgDark : Colors.bg
+    border.color: isHighlighted ? Colors.fg : "transparent"
     border.width: 2
     topRightRadius: appLauncher.menuRadius - appLauncher.menuMargin/2
     bottomRightRadius: appLauncher.menuRadius - appLauncher.menuMargin/2
@@ -35,7 +35,7 @@ Rectangle {
             implicitWidth: appLauncher.iconSize + appLauncher.menuPadding *2
             implicitHeight: appLauncher.iconSize + appLauncher.menuPadding *2
 
-            color: Theme.fg
+            color: Colors.fg
             radius: appLauncher.menuRadius
             
             IconImage {
@@ -53,9 +53,9 @@ Rectangle {
             
             text: appEntry.appName
             
-            color: Theme.fg
-            font.family: Theme.fontFamily
-            font.pixelSize: Theme.fontSize *2
+            color: Colors.fg
+            font.family: Typography.fontFamily
+            font.pixelSize: Typography.fontSize *2
         }
     }
 }

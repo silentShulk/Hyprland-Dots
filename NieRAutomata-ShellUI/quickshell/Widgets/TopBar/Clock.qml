@@ -5,58 +5,45 @@ import "../../Data"
 import "../Components"
 import "../../Theme"
 
-Rectangle {
+TopBarIsland {
     id: clockdate
 
-    width: topBar.islandsWidth + topBar.islandsPadding * 2
-    height: topBar.islandsHeight + topBar.islandsPadding * 2
+    preferredWidth: topBar.islandsWidth
 
-    color: Theme.bg
-    radius: topBar.islandsRadius
+    IslandBadge {
+        icon: "calendar_month"
+
+        onBadgeClicked: {
+            calendarPopup.visible = !calendarPopup.visible;
+        }
+    }
 
     RowLayout {
-        anchors.left: parent.left
-        anchors.verticalCenter: parent.verticalCenter
+        spacing: 8
 
-        anchors.leftMargin: topBar.islandsPadding
+        Text {
+            text: SystemStats.currentTime
+            font.family: Typography.fontFamily
+            font.weight: Typography.fontWeight
+            font.pixelSize: Typography.fontSize
 
-        spacing: 12
-
-        IslandBadge {
-            icon: "calendar_month"
-
-            onBadgeClicked: {
-                calendarPopup.visible = !calendarPopup.visible;
-            }
+            color: Colors.fg
         }
+        Text {
+            text: "|"
+            font.family: Typography.fontFamily
+            font.weight: Typography.fontWeight
+            font.pixelSize: Typography.fontSize
 
-        RowLayout {
-            spacing: 8
+            color: Colors.fg
+        }
+        Text {
+            text: SystemStats.date
+            font.family: Typography.fontFamily
+            font.weight: Typography.fontWeight
+            font.pixelSize: Typography.fontSize
 
-            Text {
-                text: SystemStats.currentTime
-                font.family: Theme.fontFamily
-                font.weight: Theme.fontWeight
-                font.pixelSize: Theme.fontSize
-
-                color: Theme.fg
-            }
-            Text {
-                text: "|"
-                font.family: Theme.fontFamily
-                font.weight: Theme.fontWeight
-                font.pixelSize: Theme.fontSize
-
-                color: Theme.fg
-            }
-            Text {
-                text: SystemStats.date
-                font.family: Theme.fontFamily
-                font.weight: Theme.fontWeight
-                font.pixelSize: Theme.fontSize
-
-                color: Theme.fg
-            }
+            color: Colors.fg
         }
     }
 }

@@ -8,47 +8,36 @@ import "../../Data"
 import "../Components"
 import "../../Theme"
 
-Rectangle {
+TopBarIsland {
     id: workspaces
 
-    width: topBar.islandsWidth + topBar.islandsPadding * 2
-    height: topBar.islandsHeight + topBar.islandsPadding * 2
+    preferredWidth: topBar.islandsWidth
 
-    color: Theme.bg
-    radius: topBar.islandsRadius
+    IslandBadge {
+        icon: "apps"
+
+        onBadgeClicked: {
+            Quickshell.execDetached(["missioncenter"]);
+        }
+    }
 
     RowLayout {
-        anchors.left: parent.left
-        anchors.verticalCenter: parent.verticalCenter
+        spacing: 16
 
-        anchors.leftMargin: topBar.islandsPadding
+        Repeater {
+            model: Hyprland.workspaces
 
-        spacing: 12
+            RowLayout {
+                spacing: 4
 
-        IslandBadge {
-            icon: "apps"
+                Repeater {
+                    model: modelData.toplevels
 
-            onBadgeClicked: {
-                Quickshell.execDetached(["missioncenter"]);
-            }
-        }
-
-        RowLayout {
-            spacing: 16
-
-            Repeater {
-                model: Hyprland.workspaces
-
-                RowLayout {
-                    spacing: 4
-
-                    Repeater {
-                        model: modelData.toplevels
-
-                        IconImage {
-                            implicitSize: 16
-                            source: Quickshell.iconPath(DesktopEntries.byId(modelData.wayland?.appId).icon)
-                        }
+                    IconImage {
+                        implicitSize: 16
+                        readonly property string appIcon: DesktopEntries.byId(modelData.wayland?.appId)?.icon ?? ""
+                        visible: appIcon !== ""
+                        source: visible ? Quickshell.iconPath(appIcon) : ""
                     }
                 }
             }

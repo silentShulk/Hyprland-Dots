@@ -24,7 +24,7 @@ PanelWindow {
 
     property int barCount: 64
     property int barSpacing: 8
-    property color barColor: Theme.fg
+    property color barColor: Colors.fg
     property real smoothMs: 32
 
     property var barValues: []

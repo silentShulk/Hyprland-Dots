@@ -6,60 +6,45 @@ import "../../Data"
 import "../Components"
 import "../../Theme"
 
-Rectangle {
+TopBarIsland {
     id: system
 
-    width: topBar.islandsWidth + topBar.islandsPadding * 2
-    height: topBar.islandsHeight + topBar.islandsPadding * 2
+    preferredWidth: topBar.islandsWidth
 
-    color: Theme.bg
-    radius: topBar.islandsRadius
+    IslandBadge {
+        icon: "speed"
+
+        onBadgeClicked: {
+            Quickshell.execDetached(["missioncenter"]);
+        }
+    }
 
     RowLayout {
-        id: systemLayout
+        spacing: 16
 
-        anchors.left: parent.left
-        anchors.verticalCenter: parent.verticalCenter
+        Text {
+            text: "\u{F035B} " + `${SystemStats.cpuUsage}%`
+            font.family: Typography.fontFamily
+            font.weight: Typography.fontWeight
+            font.pixelSize: Typography.fontSize
 
-        anchors.leftMargin: topBar.islandsPadding
-
-        spacing: 12
-
-        IslandBadge {
-            icon: "speed"
-
-            onBadgeClicked: {
-                Quickshell.execDetached(["missioncenter"]);
-            }
+            color: Colors.fg
         }
+        Text {
+            text: "\u{F0EC2} " + `${SystemStats.ramUsage}%`
+            font.family: Typography.fontFamily
+            font.weight: Typography.fontWeight
+            font.pixelSize: Typography.fontSize
 
-        RowLayout {
-            spacing: 16
+            color: Colors.fg
+        }
+        Text {
+            text: "\u{F02CA} " + `${SystemStats.diskFreeSpace}` + "GB"
+            font.family: Typography.fontFamily
+            font.weight: Typography.fontWeight
+            font.pixelSize: Typography.fontSize
 
-            Text {
-                text: "\u{F035B} " + `${SystemStats.cpuUsage}%`
-                font.family: Theme.fontFamily
-                font.weight: Theme.fontWeight
-                font.pixelSize: Theme.fontSize
-
-                color: Theme.fg
-            }
-            Text {
-                text: "\u{F0EC2} " + `${SystemStats.ramUsage}%`
-                font.family: Theme.fontFamily
-                font.weight: Theme.fontWeight
-                font.pixelSize: Theme.fontSize
-
-                color: Theme.fg
-            }
-            Text {
-                text: "\u{F02CA} " + `${SystemStats.diskAvailability}% (${SystemStats.diskFreeSpace})`
-                font.family: Theme.fontFamily
-                font.weight: Theme.fontWeight
-                font.pixelSize: Theme.fontSize
-
-                color: Theme.fg
-            }
+            color: Colors.fg
         }
     }
 }

@@ -21,7 +21,7 @@ PanelWindow {
         top: true
     }
     margins {
-        top: topBar.barHeight + topBar.islandsMargin
+        top: topBar.barHeight + Style.margin
     }
 
     implicitWidth: 256
@@ -36,10 +36,10 @@ PanelWindow {
     Rectangle {
         anchors.fill: parent
 
-        color: Qt.rgba(Theme.bg.r, Theme.bg.g, Theme.bg.b, 0.75)
-        radius: topBar.islandsRadius
+        color: Qt.rgba(Colors.bg.r, Colors.bg.g, Colors.bg.b, 0.75)
+        radius: Style.radius
 
-        border.color: Theme.fg
+        border.color: Colors.fg
         border.width: 1
 
         ColumnLayout {
@@ -50,20 +50,20 @@ PanelWindow {
 
             RowLayout {
                 Rectangle {
-                    width: 24
-                    height: 24
+                    Layout.preferredWidth: 24
+                    Layout.preferredHeight: 24
 
                     color: "transparent"
-                    radius: topBar.islandsRadius
+                    radius: Style.radius
 
                     Text {
                         anchors.centerIn: parent
 
                         text: "‹"
-                        font.family: Theme.fontFamily
-                        font.pixelSize: Theme.fontSize * 2
+                        font.family: Typography.fontFamily
+                        font.pixelSize: Typography.fontSize * 2
 
-                        color: Theme.accent1
+                        color: Colors.accent1
                     }
 
                     MouseArea {
@@ -85,27 +85,27 @@ PanelWindow {
                     horizontalAlignment: Text.AlignHCenter
 
                     text: Qt.formatDate(new Date(calendar.selectedYear, calendar.selectedMonth, 1), "MMMM yyyy")
-                    font.family: Theme.fontFamily
-                    font.pixelSize: Theme.fontSize
+                    font.family: Typography.fontFamily
+                    font.pixelSize: Typography.fontSize
                     font.bold: true
 
-                    color: Theme.fg
+                    color: Colors.fg
                 }
                 Rectangle {
-                    width: 24
-                    height: 24
+                    Layout.preferredWidth: 24
+                    Layout.preferredHeight: 24
 
                     color: "transparent"
-                    radius: topBar.islandsRadius
+                    radius: Style.radius
 
                     Text {
                         anchors.centerIn: parent
 
                         text: "›"
-                        font.family: Theme.fontFamily
-                        font.pixelSize: Theme.fontSize * 2
+                        font.family: Typography.fontFamily
+                        font.pixelSize: Typography.fontSize * 2
 
-                        color: Theme.accent2
+                        color: Colors.accent2
                     }
 
                     MouseArea {
@@ -132,12 +132,12 @@ PanelWindow {
                 delegate: Text {
                     required property string shortName
                     text: shortName
-                    font.pixelSize: Theme.fontSize - 3
+                    font.pixelSize: Typography.fontSize - 3
                     font.bold: true
 
                     horizontalAlignment: Text.AlignHCenter
 
-                    color: Theme.fg
+                    color: Colors.fg
                     opacity: 0.5
                 }
             }
@@ -154,18 +154,18 @@ PanelWindow {
                     required property var model
 
                     opacity: model.month === calendar.selectedMonth ? 1.0 : 0.25
-                    color: model.today ? Theme.accent2 : "transparent"
-                    radius: topBar.islandsRadius
+                    color: model.today ? Colors.accent2 : "transparent"
+                    radius: Style.radius
 
                     Text {
                         anchors.centerIn: parent
 
                         text: parent.model.day
-                        font.family: Theme.fontFamily
-                        font.pixelSize: Theme.fontSize - 1
+                        font.family: Typography.fontFamily
+                        font.pixelSize: Typography.fontSize - 1
                         font.bold: parent.model.today
 
-                        color: model.today ? Theme.accent1 : Theme.fg
+                        color: model.today ? Colors.accent1 : Colors.fg
                     }
                 }
             }

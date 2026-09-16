@@ -44,7 +44,7 @@ PanelWindow {
         width: parent.width
         height: parent.height
         
-        color: Theme.bg
+        color: Colors.bg
         topRightRadius: appLauncher.menuRadius 
         bottomRightRadius: appLauncher.menuRadius 
 
@@ -74,11 +74,11 @@ PanelWindow {
                 onTextChanged: appLauncher.selectedIndex = 0
                 
                 placeholderText: "Search..."
-                font.family: Theme.fontFamily
-                font.pixelSize: Theme.fontSize
+                font.family: Typography.fontFamily
+                font.pixelSize: Typography.fontSize
 
                 background: Rectangle {
-                    color: Theme.fg
+                    color: Colors.fg
                     topRightRadius: appLauncher.menuRadius - appLauncher.menuMargin/2
                     bottomRightRadius: appLauncher.menuRadius - appLauncher.menuMargin/2
                 }

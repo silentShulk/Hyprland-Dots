@@ -6,19 +6,21 @@ Rectangle {
     id: badge
 
     required property string icon
-    property bool background: true
+    
     property color iconColor: "black"
+    property bool background: true
+    property color backgroundColor: Colors.fg
     property real fontSizeMultiplier: 1
-    property int widthOverride: 24
-    property int heightOverride: 24
+    property int preferredWidth: 24
+    property int preferredHeight: 24
     
     signal badgeClicked(var mouse)
 
-    implicitWidth: widthOverride
-    implicitHeight: heightOverride
+    implicitWidth: preferredWidth
+    implicitHeight: preferredHeight
 
-    color: background ? (mouseArea.containsMouse ? Theme.fgDark : Theme.fg) : "transparent"
-    radius: Theme.radius /2
+    color: background ? (mouseArea.containsMouse ? Colors.darkVariant(backgroundColor) : backgroundColor) : "transparent"
+    radius: Style.radius - Style.padding
 
     Text {
         anchors.centerIn: parent
@@ -26,9 +28,9 @@ Rectangle {
         text: badge.icon
         color: badge.iconColor
         
-        font.family: Theme.iconFontFamily
-        font.variableAxes: Theme.iconAxes
-        font.pixelSize: Theme.iconFontSize * badge.fontSizeMultiplier
+        font.family: Typography.iconFontFamily
+        font.variableAxes: Typography.iconAxes
+        font.pixelSize: Typography.iconFontSize * badge.fontSizeMultiplier
     }
 
     MouseArea {

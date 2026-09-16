@@ -16,14 +16,9 @@ PanelWindow {
         right: true
     }
 
-    readonly property int barHeight: 54
+    readonly property int barHeight: 56
 
     readonly property int islandsWidth: 256
-    readonly property int islandsHeight: 24
-    readonly property int islandsPadding: 8
-    readonly property int islandsMargin: 12
-    readonly property int islandsRadius: 8
-    readonly property int islandsSpacing: 16
 
     implicitHeight: barHeight
     color: 'transparent'
@@ -32,10 +27,11 @@ PanelWindow {
     RowLayout {
         anchors.left: parent.left
         anchors.top: parent.top
-        anchors.leftMargin: topBar.islandsMargin
-        anchors.topMargin: topBar.islandsMargin
+        anchors.leftMargin: Style.margin
+        anchors.topMargin: Style.margin
+        anchors.bottomMargin: Style.margin
 
-        spacing: topBar.islandsSpacing
+        spacing: Style.margin
 
         HyprlandWorkspaces {}
     }
@@ -44,9 +40,10 @@ PanelWindow {
     RowLayout {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
-        anchors.topMargin: topBar.islandsMargin
-
-        spacing: topBar.islandsSpacing
+        anchors.topMargin: Style.margin
+        anchors.bottomMargin: Style.margin
+        
+        spacing: Style.margin
 
         Clock {}
 
@@ -57,10 +54,11 @@ PanelWindow {
     RowLayout {
         anchors.right: parent.right
         anchors.top: parent.top
-        anchors.rightMargin: topBar.islandsMargin
-        anchors.topMargin: topBar.islandsMargin
+        anchors.rightMargin: Style.margin
+        anchors.topMargin: Style.margin
+        anchors.bottomMargin: Style.margin
 
-        spacing: topBar.islandsSpacing
+        spacing: Style.margin
 
         Audio {}
 
@@ -68,7 +66,6 @@ PanelWindow {
 
         PowerButton {}
     }
-
     
     Calendar {
         id: calendarPopup
