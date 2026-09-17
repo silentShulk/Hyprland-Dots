@@ -8,16 +8,9 @@ import "../../Theme"
 TopBarIsland {
     id: clockdate
 
-    preferredWidth: topBar.islandsWidth
-
-    IslandBadge {
-        icon: "calendar_month"
-
-        onBadgeClicked: {
-            calendarPopup.visible = !calendarPopup.visible;
-        }
-    }
-
+    icon: "calendar_month"
+    onBadgeClicked: calendarPopup.visible = !calendarPopup.visible
+    
     RowLayout {
         spacing: 8
 

@@ -4,6 +4,7 @@ import Quickshell.Wayland
 import QtQuick.Layouts
 import QtQuick.Controls
 
+import "../../Data"
 import "../Components"
 import "../../Theme"
 
@@ -11,6 +12,7 @@ PanelWindow {
     id: notificationsCenter
 
     WlrLayershell.layer: WlrLayer.Overlay
+    exclusionMode: ExclusionMode.Ignore
 
     anchors {
         top: true
@@ -18,7 +20,7 @@ PanelWindow {
         bottom: true
     }
     margins {
-        top: 20
+        top: 80
         right: 20
         bottom: 20
     }
@@ -32,6 +34,9 @@ PanelWindow {
 
         color: Colors.bg
         radius: Style.radius
+
+        border.width: 5
+        border.color: Colors.bgDark
 
         ColumnLayout {
             anchors.fill: parent
@@ -125,6 +130,12 @@ PanelWindow {
                             model: SystemStats.notificationHistory
                             NotificationPopUp {
                                 required property var modelData
+
+                                notifId: modelData.notifId
+                                summary: modelData.summary
+                                body: modelData.body
+                                appIcon: modelData.appIcon
+                                image: modelData.image
 
                                 onDismissed: SystemStats.removeFromHistory(modelData.notifId)
                             }

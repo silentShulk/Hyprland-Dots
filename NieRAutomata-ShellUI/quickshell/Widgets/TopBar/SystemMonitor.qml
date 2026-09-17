@@ -9,16 +9,9 @@ import "../../Theme"
 TopBarIsland {
     id: system
 
-    preferredWidth: topBar.islandsWidth
-
-    IslandBadge {
-        icon: "speed"
-
-        onBadgeClicked: {
-            Quickshell.execDetached(["missioncenter"]);
-        }
-    }
-
+    icon: "speed"
+    onBadgeClicked: Quickshell.execDetached(["missioncenter"])
+    
     RowLayout {
         spacing: 16
 

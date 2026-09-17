@@ -11,15 +11,8 @@ import "../../Theme"
 TopBarIsland {
     id: workspaces
 
-    preferredWidth: topBar.islandsWidth
-
-    IslandBadge {
-        icon: "apps"
-
-        onBadgeClicked: {
-            Quickshell.execDetached(["missioncenter"]);
-        }
-    }
+    icon: "apps"
+    onBadgeClicked: Quickshell.execDetached(["missioncenter"])
 
     RowLayout {
         spacing: 16

@@ -18,8 +18,6 @@ PanelWindow {
 
     readonly property int barHeight: 56
 
-    readonly property int islandsWidth: 256
-
     implicitHeight: barHeight
     color: 'transparent'
 

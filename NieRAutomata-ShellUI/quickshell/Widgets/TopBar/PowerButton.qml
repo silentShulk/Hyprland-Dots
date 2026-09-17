@@ -7,25 +7,14 @@ import "../../Theme"
 TopBarIsland {
     id: power
 
-    preferredWidth: topBar.islandsHeight
     square: true
     
     color: Colors.accent1
 
-    IslandBadge {
-        icon: "settings_power"
-        
-        background: false
-        iconColor: Colors.fg
-        fontSizeMultiplier: 2
-    }
+    icon: "settings_power"
+    
+    iconBackground: false
+    iconColor: Colors.fg
+    iconFontSizeMultiplier: 2
 
-    MouseArea {
-        anchors.fill: parent
-
-        cursorShape: Qt.PointingHandCursor
-        onClicked: {
-            Loaders.logoutMenuLoader.active = !Loaders.logoutMenuLoader.active
-        }
-    }
-}
+    onBadgeClicked: Loaders.logoutMenuLoader.active = !Loaders.logoutMenuLoader.active}

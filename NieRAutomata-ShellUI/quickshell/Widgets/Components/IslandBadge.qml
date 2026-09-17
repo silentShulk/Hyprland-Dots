@@ -8,11 +8,12 @@ Rectangle {
     required property string icon
     
     property color iconColor: "black"
+    property int preferredWidth: 24
+    property int preferredHeight: 24
     property bool background: true
     property color backgroundColor: Colors.fg
     property real fontSizeMultiplier: 1
-    property int preferredWidth: 24
-    property int preferredHeight: 24
+    property int preferredRadius: Style.radius - Style.padding
     
     signal badgeClicked(var mouse)
 
@@ -20,7 +21,7 @@ Rectangle {
     implicitHeight: preferredHeight
 
     color: background ? (mouseArea.containsMouse ? Colors.darkVariant(backgroundColor) : backgroundColor) : "transparent"
-    radius: Style.radius - Style.padding
+    radius: preferredRadius
 
     Text {
         anchors.centerIn: parent

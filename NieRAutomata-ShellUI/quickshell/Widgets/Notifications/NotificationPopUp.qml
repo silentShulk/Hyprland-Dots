@@ -16,9 +16,6 @@ Rectangle {
     required property string image
     signal dismissed()
 
-    // Optional overrides. Leave at -1 to size dynamically to the parent
-    // container's width (via Layout.fillWidth below); set a positive value
-    // to force a fixed size instead.
     property real widthOverride: -1
     property real heightOverride: -1
 
@@ -31,8 +28,6 @@ Rectangle {
     implicitWidth: widthOverride > 0 ? widthOverride : 350
     implicitHeight: heightOverride > 0 ? heightOverride : 150
 
-    // Only stretch to fill the parent's width when no explicit
-    // widthOverride was given - otherwise respect the fixed implicitWidth.
     Layout.fillWidth: widthOverride <= 0
 
     radius: Style.radius
