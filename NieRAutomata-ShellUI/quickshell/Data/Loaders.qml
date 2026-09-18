@@ -12,7 +12,7 @@ Singleton {
 
     Loader { id: topBarLoader; active: true; source: "../Widgets/TopBar/TopBar.qml" }
     Loader { id: cavaLoader; active: true; source: "../Widgets/Cava/CavaVisualizer.qml" }
-    Loader { id: logoutMenuLoader; active: true; source: "../Widgets/LogoutMenu/LogoutMenu.qml" }
+    Loader { id: logoutMenuLoader; active: false; source: "../Widgets/LogoutMenu/LogoutMenu.qml" }
     Loader { id: notificationsLoader; active: true; source: "../Widgets/Notifications/NotificationsManager.qml" }
     Loader { id: notificationsCenterLoader; active: false; source: "../Widgets/Notifications/NotificationsCenter.qml" }
     Loader { id: appLauncherLoader; active: false; source: "../Widgets/AppLauncher/AppLauncher.qml" }

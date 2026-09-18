@@ -1,21 +1,30 @@
 import Quickshell
+import Quickshell.Wayland
 import QtQuick
 import QtQuick.Layouts
 
+import "../../Data"
 import "../Components"
 import "../../Theme"
 
 PanelWindow {
-    anchors {
-        top: true
-        left: true
-        right: true
-        bottom: true
-    }
+    id: root
 
-    visible: false
+    anchors { top: true; left: true; right: true; bottom: true }
 
     color: "#cc000000"
+
+    WlrLayershell.layer: WlrLayer.Overlay
+    WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
+    exclusionMode: ExclusionMode.Ignore
+
+    contentItem.focus: true
+    contentItem.Keys.onEscapePressed: Loaders.logoutMenuLoader.active = false
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: Loaders.logoutMenuLoader.active = false
+    }
 
     RowLayout {
         anchors.centerIn: parent
