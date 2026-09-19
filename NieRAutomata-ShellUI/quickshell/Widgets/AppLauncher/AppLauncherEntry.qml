@@ -13,14 +13,13 @@ Rectangle {
     property string appIcon
     property bool isHighlighted
 
-    width: appLauncher.menuWidth - appLauncher.menuMargin
+    width: appLauncher.menuWidth - appLauncher.menuMargin *2
     height: entryContent.implicitHeight + (appLauncher.menuPadding *2)
 
     color: isHighlighted ? Colors.bgDark : Colors.bg
     border.color: isHighlighted ? Colors.fg : "transparent"
     border.width: 2
-    topRightRadius: appLauncher.menuRadius - appLauncher.menuMargin/2
-    bottomRightRadius: appLauncher.menuRadius - appLauncher.menuMargin/2
+    radius: appLauncher.menuRadius - appLauncher.menuMargin/2
 
     RowLayout {
         id: entryContent

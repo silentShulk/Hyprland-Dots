@@ -32,8 +32,8 @@ Rectangle {
 
     radius: Style.radius
     color: Colors.bg
-    border.width: 5
-    border.color: Colors.fgDark
+    border.width: 2
+    border.color: Colors.fg
 
     ColumnLayout {
         id: notificationContent

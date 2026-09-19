@@ -25,28 +25,25 @@ PanelWindow {
     )
     property int selectedIndex: 0
 
-    anchors {
-        left: true
-    }
-    
     implicitWidth: appLauncher.menuWidth
     implicitHeight: appLauncher.menuWidth
     
     color: "transparent"
 
     Rectangle {
-        NumberAnimation on x {
+        NumberAnimation on y {
             from: -appLauncher.menuWidth
             to: 0
             duration: 250
         }
         
-        width: parent.width
-        height: parent.height
+        anchors.fill: parent
+
+        border.width: 2
+        border.color: Colors.fg
         
         color: Colors.bg
-        topRightRadius: appLauncher.menuRadius 
-        bottomRightRadius: appLauncher.menuRadius 
+        radius: appLauncher.menuRadius 
 
         ColumnLayout {
             anchors.top: parent.top
@@ -57,6 +54,7 @@ PanelWindow {
             anchors.topMargin: appLauncher.menuMargin
             anchors.bottomMargin: appLauncher.menuMargin
             anchors.rightMargin: appLauncher.menuMargin
+            anchors.leftMargin: appLauncher.menuMargin
 
             spacing: appLauncher.menuMargin
 
@@ -79,8 +77,7 @@ PanelWindow {
 
                 background: Rectangle {
                     color: Colors.fg
-                    topRightRadius: appLauncher.menuRadius - appLauncher.menuMargin/2
-                    bottomRightRadius: appLauncher.menuRadius - appLauncher.menuMargin/2
+                    radius: appLauncher.menuRadius - appLauncher.menuMargin/2
                 }
 
                 Keys.onTabPressed: event => {

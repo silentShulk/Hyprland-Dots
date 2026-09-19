@@ -40,7 +40,7 @@ PanelWindow {
         radius: Style.radius
 
         border.color: Colors.fg
-        border.width: 1
+        border.width: 2
 
         ColumnLayout {
             anchors.fill: parent
